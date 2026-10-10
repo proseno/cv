@@ -16,40 +16,31 @@
 body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
-/* Layout: one long page over a faint animated network. Hero pairs a headline with a "storefront to ERP" lane map; 2 project cards; ruled career timeline; stack as 8 equal cards. Dark navy first, light follows the system.
+/* Layout: one long page over a faint animated network. Hero pairs a headline with a "storefront to ERP" lane map; 2 project cards; ruled career timeline; stack as 8 equal cards. Light by default; dark navy through the theme switch.
    Borders: every container uses 1px solid var(--line) with --r radius, every small control uses --r-sm. */
 :root {
-  --bg: #0d1a2f;
-  --surface: #14233d;
-  --fg: #eaf0fb;
-  --muted: #a8b6cf;
-  --line: #2b3d5e;
-  --line-hi: #4a6190;
-  --accent: #7db2ff;
-  --accent-2: #4fd6c3;
-  --accent-fg: #0a1628;
-  --soft: #1b2f52;
-  --net-a: 0.22;
+  --bg: #f2f6fc;
+  --surface: #ffffff;
+  --fg: #0e1a30;
+  --muted: #4e5f7c;
+  --line: #d0dae9;
+  --line-hi: #9fb2d0;
+  --accent: #1c58d6;
+  --accent-2: #0c8f82;
+  --accent-fg: #ffffff;
+  --soft: #e4edfb;
+  --net-a: 0.2;
   --r: 10px;
   --r-sm: 6px;
   --f-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --f-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --bg: #f2f6fc; --surface: #ffffff; --fg: #0e1a30; --muted: #4e5f7c;
-    --line: #d0dae9; --line-hi: #9fb2d0; --accent: #1c58d6; --accent-2: #0c8f82;
-    --accent-fg: #ffffff; --soft: #e4edfb; --net-a: 0.2;
-    color-scheme: light;
-  }
-}
-:root[data-theme="light"] {
-  --bg: #f2f6fc; --surface: #ffffff; --fg: #0e1a30; --muted: #4e5f7c;
-  --line: #d0dae9; --line-hi: #9fb2d0; --accent: #1c58d6; --accent-2: #0c8f82;
-  --accent-fg: #ffffff; --soft: #e4edfb; --net-a: 0.2;
   color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #0d1a2f; --surface: #14233d; --fg: #eaf0fb; --muted: #a8b6cf; --line: #2b3d5e; --line-hi: #4a6190;
+  --accent: #7db2ff; --accent-2: #4fd6c3; --accent-fg: #0a1628; --soft: #1b2f52; --net-a: 0.22;
+  color-scheme: dark;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 72px; }
@@ -196,7 +187,12 @@ dl.facts dd { margin: 0; min-width: 0; }
 @media (min-width: 720px) { .timeline > li { grid-template-columns: 150px minmax(0, 1fr); } }
 .when { font-family: var(--f-mono); font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 3px; }
 .role { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); margin: 4px 0 8px; }
-.timeline p { color: var(--muted); max-width: 70ch; font-size: 15px; }
+.timeline p { color: var(--fg); max-width: 70ch; font-size: 15px; }
+.timeline .ctx { font-size: 16px; margin-bottom: 12px; }
+.pts { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; max-width: 72ch; font-size: 16px; color: var(--fg); }
+.pts li { position: relative; padding-left: 18px; }
+.pts li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--accent); }
+.pts strong { color: var(--accent); font-weight: 600; }
 
 /* skills */
 .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px; }
@@ -205,9 +201,11 @@ dl.facts dd { margin: 0; min-width: 0; }
 .stack-grid h3 .ic { width: 18px; height: 18px; color: var(--accent); }
 
 /* impact */
-.why { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 28px 40px; }
+.why { display: grid; grid-template-columns: 1fr; gap: 28px 40px; }
+@media (min-width: 720px) { .why { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .why > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .why p { color: var(--muted); font-size: 15px; }
+.why strong { color: var(--fg); font-weight: 600; }
 .tile { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--r-sm); background: var(--soft); border: 1px solid var(--line); color: var(--accent); margin-bottom: 4px; }
 
 /* contact */
@@ -264,6 +262,7 @@ footer a { text-underline-offset: 3px; }
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
     <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></symbol>
     <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.9L7 22l5-3 5 3-1.2-8.1"/></symbol>
   </defs>
 </svg>
@@ -325,7 +324,7 @@ footer a { text-underline-offset: 3px; }
       </div>
       <div class="work-grid">
         <article class="card">
-          <div class="meta"><span>2026</span><span>Magento 2 Full-Stack Developer</span></div>
+          <div class="meta"><span>2026</span><span>Magento 2 Backend Developer</span></div>
           <h3>Cosmetics marketplace: customer account</h3>
           <p class="summary">A high-load marketplace for cosmetics and home goods. I own the customer account area and work with the iOS, Android, ERP and other Magento teams.</p>
           <ul class="points">
@@ -389,35 +388,72 @@ footer a { text-underline-offset: 3px; }
         <h2>8 Magento projects since 2019</h2>
       </div>
       <ol class="timeline">
-        <li>
+        <li class="rich">
           <div class="when">2026 – now</div>
-          <div><h3>Cosmetics marketplace</h3><div class="role">Magento 2 Full-Stack Developer</div>
-          <p>Customer account area, custom bundle products, order change requests, production bug fixes, PHPUnit and API tests.</p></div>
+          <div><h3>Cosmetics marketplace</h3><div class="role">Magento 2 Backend Developer</div>
+          <p class="ctx">A high-load marketplace for cosmetics and home goods. I own the customer account area and work with the iOS, Android, ERP and other Magento teams.</p>
+          <ul class="pts">
+            <li><strong>Customer account:</strong> moved from Vue Storefront to Nuxt.js, with the backend support it needed.</li>
+            <li><strong>Custom bundle product</strong> with several child products and its own stock and price calculation.</li>
+            <li><strong>Order change requests:</strong> customers edit a placed order by sending a request to support.</li>
+            <li><strong>Console command</strong> that fixes bad customer name data in Magento and the ERPs, tuned to run safely on production.</li>
+            <li><strong>Production fixes</strong> covered with PHPUnit and API tests.</li>
+          </ul></div>
         </li>
-        <li>
+        <li class="rich">
           <div class="when">2025 – 2026</div>
           <div><h3>EU tobacco and e-cigarette retailer</h3><div class="role">Magento 2 Backend Developer</div>
-          <p>On-duty engineer for production-critical bugs. Unblocked checkout, upgraded Magento across several projects and added REST API support for managing attribute options externally.</p></div>
+          <ul class="pts">
+            <li><strong>On-duty engineer</strong> for production-critical issues.</li>
+            <li><strong>Checkout:</strong> found and removed what blocked it.</li>
+            <li><strong>Magento upgrades</strong> across several projects.</li>
+            <li><strong>REST API support</strong> for managing attribute options from external systems.</li>
+          </ul></div>
         </li>
-        <li>
+        <li class="rich">
           <div class="when">2025</div>
           <div><h3>Multi-vendor marketplace</h3><div class="role">Magento 2 Full-Stack Developer</div>
-          <p>Set up the shop from scratch, built the Nova Poshta delivery integration and customised account, product page, listing and review layouts to the design.</p></div>
+          <ul class="pts">
+            <li><strong>Store set up from scratch.</strong></li>
+            <li><strong>Nova Poshta delivery integration.</strong></li>
+            <li><strong>Layouts customised to the design:</strong> account, product page, listing and reviews.</li>
+          </ul></div>
         </li>
-        <li>
+        <li class="rich">
           <div class="when">2024 – 2025</div>
           <div><h3>Remote-access software vendor</h3><div class="role">Magento 2 Full-Stack Developer</div>
-          <p>Adobe Commerce upgrade with encryption key rotation, Adyen and Marketo work, legacy cleanup.</p></div>
+          <p class="ctx">A global provider of remote connectivity software with a long-lived Adobe Commerce codebase.</p>
+          <ul class="pts">
+            <li><strong>Adobe Commerce upgrade</strong> with the security patch and encryption key rotation.</li>
+            <li><strong>Adyen payment module</strong> updated with all custom logic kept in place.</li>
+            <li><strong>Marketo integration</strong> refactored for leads and opportunities.</li>
+            <li><strong>Firebear_ImportExport</strong> brought to the latest version after 5 years of customisation.</li>
+            <li><strong>Cleanup:</strong> unneeded Elasticsearch modules removed, CSP policies added, Sentry issues fixed.</li>
+          </ul></div>
         </li>
-        <li>
+        <li class="rich">
           <div class="when">2023 – 2024</div>
           <div><h3>B2B construction materials seller</h3><div class="role">Magento 2 Full-Stack Developer</div>
-          <p>New Adobe Commerce shop integrated with SAP ERP and PIM, with customised B2B features.</p></div>
+          <p class="ctx">A global building materials seller moved from manual ordering to an Adobe Commerce store that automates the process.</p>
+          <ul class="pts">
+            <li><strong>SAP ERP and PIM integration:</strong> planned and built, including the mapping between SAP and Adobe Commerce entities.</li>
+            <li><strong>B2B features</strong> customised: quick order, company accounts, requisition lists and negotiable quotes.</li>
+            <li><strong>Requisition list page</strong> rebuilt on a listing UI component with ajax reload.</li>
+            <li><strong>Custom attributes</strong> on orders, quotes and products, deployed on Adobe Commerce Cloud.</li>
+          </ul></div>
         </li>
-        <li>
+        <li class="rich">
           <div class="when">2021 – 2023</div>
-          <div><h3>GCC cosmetics retailer</h3><div class="role">Software Engineer, Magento 2 Backend Developer</div>
-          <p>Salesforce, Aramex, SMS verification, SFTP reporting, Arabic invoicing and database archiving.</p></div>
+          <div><h3>GCC cosmetics retailer</h3><div class="role">Magento 2 Backend Developer</div>
+          <p class="ctx">A distributor of cosmetic brands in the Gulf region and Egypt. Magento 2 ran headless behind a Salesforce front end.</p>
+          <ul class="pts">
+            <li><strong>Salesforce Commerce Cloud sync:</strong> orders, products, prices and inventory through XML files and cron jobs.</li>
+            <li><strong>Aramex integration:</strong> maintained and refactored order status, history and inventory.</li>
+            <li><strong>Arabic PDF invoices:</strong> helped build the module, including the QR code needed for KSA e-invoicing.</li>
+            <li><strong>MySQL archiving:</strong> wrote a module that archives large tables on a schedule to shrink the database.</li>
+            <li><strong>Varnish:</strong> helped roll it out on every website.</li>
+            <li><strong>Also:</strong> SMS verification and SFTP reporting.</li>
+          </ul></div>
         </li>
         <li>
           <div class="when">2020 – 2021</div>
@@ -441,13 +477,13 @@ footer a { text-underline-offset: 3px; }
       </div>
       <div class="stack-grid">
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg>Platform</h3><ul class="chips"><li class="hl">Magento 2</li><li>Adobe Commerce</li><li>Adobe Commerce Cloud</li><li>Magento Open Source</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>AI-assisted development</h3><ul class="chips"><li class="hl">Claude Code</li><li class="hl">Codex CLI</li></ul><span class="lane-k">Skills</span><ul class="chips"><li>ponytail</li><li>brainstorm</li><li>superpowers</li><li>caveman</li></ul></div>
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-code"/></svg>Backend</h3><ul class="chips"><li>PHP</li><li>SOLID</li><li>CQRS</li><li>REST API</li><li>GraphQL</li><li>Composer</li></ul></div>
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg>Data and speed</h3><ul class="chips"><li>MySQL</li><li>Redis</li><li>Elasticsearch</li><li>Varnish</li></ul></div>
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg>Async</h3><ul class="chips"><li>RabbitMQ</li><li>AMQP</li><li>Cron</li><li>Queue</li></ul></div>
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-term"/></svg>Environment</h3><ul class="chips"><li>Nginx</li><li>Docker</li><li>Docker Compose</li><li>Warden</li><li>DDEV</li><li>Linux</li><li>Git</li></ul></div>
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-monitor"/></svg>Frontend</h3><ul class="chips"><li>JavaScript</li><li>HTML</li><li>KnockoutJS</li><li>jQuery</li><li>Grunt</li><li>Nuxt.js</li><li>Vue Storefront</li><li>React</li></ul></div>
         <div><h3><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Quality and workflow</h3><ul class="chips"><li>PHPUnit</li><li>Sentry</li><li>Azure DevOps</li><li>GitLab</li><li>Jira</li><li>YouTrack</li><li>ActiveCollab</li></ul></div>
-        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>AI-assisted development</h3><ul class="chips"><li class="hl">Claude Code</li><li class="hl">Codex CLI</li></ul><span class="lane-k">Skills</span><ul class="chips"><li>ponytail</li><li>brainstorm</li><li>superpowers</li><li>caveman</li></ul></div>
       </div>
     </div>
   </section>
@@ -459,9 +495,10 @@ footer a { text-underline-offset: 3px; }
         <h2>My impact on a project</h2>
       </div>
       <div class="why">
+        <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg></span><h3>Feature ownership</h3><p>I take a feature, such as the customer account area or an integration, from the first requirement to live in production, and keep improving it after release.</p></div>
         <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-plug"/></svg></span><h3>Integrations that keep running</h3><p>ERP, PIM, CRM, payment and carrier integrations, built on APIs or on XML files and cron, then maintained and refactored as the business changes.</p></div>
         <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-upgrade"/></svg></span><h3>Upgrades without surprises</h3><p>Version upgrades, security patches and encryption key rotation, with custom and third-party logic kept intact.</p></div>
-        <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Production ownership</h3><p>I take on critical production bugs and cover changes with PHPUnit and API tests, so fixes hold.</p></div>
+        <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Production ownership</h3><p>I take on production-critical issues as the on-duty engineer: trace the root cause, ship a safe fix and cover it with PHPUnit and API tests so it does not come back.</p></div>
       </div>
     </div>
   </section>
@@ -495,10 +532,11 @@ footer a { text-underline-offset: 3px; }
   var root = document.documentElement;
 
   /* theme switch */
+  try { if (localStorage.getItem('theme') === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
   document.getElementById('theme').addEventListener('click', function () {
-    var attr = root.getAttribute('data-theme');
-    var isDark = attr ? attr === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches;
-    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
   });
 
   /* copy address */
@@ -635,7 +673,6 @@ footer a { text-underline-offset: 3px; }
 
   window.addEventListener('resize', resize);
   try { reduce.addEventListener('change', start); } catch (e) {}
-  try { window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', readColors); } catch (e) {}
   new MutationObserver(readColors).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   resize();
   readColors();
