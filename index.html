@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer. Selected work, career and contact.">
-<title>Oleksandr Yavorskyi</title>
+<meta name="description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, career, stack and contact.">
+<meta property="og:title" content="CV Magento Developer Oleksandr Yavorskyi">
+<meta property="og:description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, career, stack and contact.">
+<meta property="og:type" content="website">
+<title>CV Magento Developer Oleksandr Yavorskyi</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0f14'/%3E%3Crect x='3' y='3' width='58' height='58' rx='10' fill='none' stroke='%237aa8ff' stroke-width='2'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%237aa8ff'%3EOY%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -80,6 +84,8 @@ header.bar {
 }
 .bar-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
 .brand { font-family: var(--f-display); font-weight: 750; font-stretch: 108%; text-decoration: none; white-space: nowrap; }
+.brand-sub { display: none; margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--line); font-family: var(--f-mono); font-weight: 400; font-stretch: 100%; font-size: 12.5px; color: var(--muted); }
+@media (min-width: 560px) { .brand-sub { display: inline; } }
 nav.links { display: none; gap: 26px; font-size: 14.5px; }
 nav.links a { text-decoration: none; color: var(--muted); }
 nav.links a:hover { color: var(--fg); }
@@ -107,6 +113,10 @@ nav.links a:hover { color: var(--fg); }
   border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 8px 12px;
 }
 .cert i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+a.cert { text-decoration: none; flex-wrap: wrap; }
+a.cert:hover { border-color: var(--accent); }
+.cert-go { color: var(--accent); padding-left: 10px; border-left: 1px solid var(--line); }
+.ulink { color: var(--accent); text-underline-offset: 3px; white-space: nowrap; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .map { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
@@ -200,9 +210,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="#top">Oleksandr Yavorskyi</a>
+    <a class="brand" href="#top">Oleksandr Yavorskyi<span class="brand-sub">CV · Magento Developer</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#work">Work</a>
+      <a href="#work">Experience</a>
       <a href="#about">About</a>
       <a href="#career">Career</a>
       <a href="#stack">Stack</a>
@@ -220,13 +230,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Adobe Commerce full-stack developer · 6+ years</p>
+        <p class="eyebrow">CV · Magento developer · 6+ years of experience</p>
         <h1>Adobe Commerce engineer who wires stores to ERPs, payments and carriers</h1>
         <p class="lead">I build and maintain Magento 2 backends for high-load stores: custom PHP, B2B features, ERP and logistics integrations, version upgrades and production fixes.</p>
-        <div class="cert"><i></i>Adobe Certified Expert · Adobe Commerce Developer</div>
+        <a class="cert" href="https://certification.adobe.com/credential/verify/3c91d8af-2d74-4f08-b385-b4b7ff478ce3" target="_blank" rel="noopener noreferrer"><i></i>Adobe Certified Expert · Adobe Commerce Developer<span class="cert-go">Verify ↗</span></a>
         <div class="actions">
           <a class="btn primary" href="#contact">Get in touch</a>
-          <a class="btn" href="#work">See selected work</a>
+          <a class="btn" href="#work">See previous experience</a>
         </div>
       </div>
 
@@ -237,7 +247,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <li><span class="lane-k">Application</span><ul class="chips"><li class="hl">Magento 2 / Adobe Commerce</li><li>PHP</li><li>GraphQL</li><li>REST API</li></ul></li>
           <li><span class="lane-k">Data</span><ul class="chips"><li>MySQL</li><li>Redis</li><li>Elasticsearch</li></ul></li>
           <li><span class="lane-k">Async</span><ul class="chips"><li>RabbitMQ</li><li>AMQP</li><li>Cron</li><li>Queue</li></ul></li>
-          <li><span class="lane-k">External systems</span><ul class="chips"><li>SAP ERP</li><li>PIM</li><li>Salesforce</li><li>Aramex</li><li>Nova Poshta</li><li>Adyen</li><li>Marketo</li></ul></li>
+          <li><span class="lane-k">External systems</span><ul class="chips"><li>Aramex</li><li>Nova Poshta</li><li>Adyen</li><li>Marketo</li><li>SAP ERP</li><li>PIM</li><li>Salesforce</li></ul></li>
         </ol>
       </div>
     </div>
@@ -246,8 +256,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="work">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Selected work</p>
-        <h2>Four projects where the backend carried the result</h2>
+        <p class="eyebrow">Previous experience</p>
+        <h2>Four recent projects in detail</h2>
         <p class="lead">Client names are kept private, so each project is described by what the business sells.</p>
       </div>
       <div class="work-grid">
@@ -265,19 +275,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </article>
 
         <article class="card">
-          <div class="meta"><span>2023 – 2024</span><span>Magento 2 Full-Stack Developer</span></div>
-          <h3>B2B construction materials: shop on SAP and PIM</h3>
-          <p class="summary">A global building materials seller moved from manual ordering to an Adobe Commerce shop that automates the process.</p>
-          <ul class="points">
-            <li>Planned and built the SAP ERP integration, including the mapping between SAP and Adobe Commerce entities.</li>
-            <li>Customised the B2B features: quick order, company accounts, requisition lists and negotiable quotes.</li>
-            <li>Rebuilt the requisition list page on a listing UI component with ajax reload.</li>
-            <li>Extended orders, quotes and products with custom attributes. Deployed and maintained on Adobe Commerce Cloud.</li>
-          </ul>
-          <ul class="chips"><li>Adobe Commerce Cloud</li><li>SAP</li><li>PIM</li><li>KnockoutJS</li><li>Docker</li><li>Warden</li></ul>
-        </article>
-
-        <article class="card">
           <div class="meta"><span>2024 – 2025</span><span>Magento 2 Full-Stack Developer</span></div>
           <h3>Remote-access software vendor: upgrades and cleanup</h3>
           <p class="summary">A global provider of remote connectivity software with a long-lived Adobe Commerce codebase.</p>
@@ -289,6 +286,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <li>Removed unneeded Elasticsearch modules, added CSP policies and fixed Sentry issues.</li>
           </ul>
           <ul class="chips"><li>Adobe Commerce</li><li>Adyen</li><li>Marketo</li><li>Sentry</li><li>DDEV</li><li>React</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="meta"><span>2023 – 2024</span><span>Magento 2 Full-Stack Developer</span></div>
+          <h3>B2B construction materials: shop on SAP and PIM</h3>
+          <p class="summary">A global building materials seller moved from manual ordering to an Adobe Commerce shop that automates the process.</p>
+          <ul class="points">
+            <li>Planned and built the SAP ERP integration, including the mapping between SAP and Adobe Commerce entities.</li>
+            <li>Customised the B2B features: quick order, company accounts, requisition lists and negotiable quotes.</li>
+            <li>Rebuilt the requisition list page on a listing UI component with ajax reload.</li>
+            <li>Extended orders, quotes and products with custom attributes. Deployed and maintained on Adobe Commerce Cloud.</li>
+          </ul>
+          <ul class="chips"><li>Adobe Commerce Cloud</li><li>SAP</li><li>PIM</li><li>KnockoutJS</li><li>Docker</li><li>Warden</li></ul>
         </article>
 
         <article class="card">
@@ -327,7 +337,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <p>I deliver on time, talk directly with other teams (mobile, ERP, other Magento teams) and like sharing what I know with the people I work with.</p>
         </div>
         <dl class="facts">
-          <dt>Certified</dt><dd>Adobe Certified Expert, Adobe Commerce Developer</dd>
+          <dt>Certified</dt><dd>Adobe Certified Expert, Adobe Commerce Developer · <a class="ulink" href="https://certification.adobe.com/credential/verify/3c91d8af-2d74-4f08-b385-b4b7ff478ce3" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></dd>
           <dt>Education</dt><dd>Master's degree in Cybersecurity, Khmelnytskyi National University</dd>
           <dt>Languages</dt><dd>Ukrainian (native), English (upper intermediate)</dd>
           <dt>Off hours</dt><dd>Basketball, reading, watching videos</dd>
@@ -401,6 +411,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div><h3>Environment</h3><ul class="chips"><li>Nginx</li><li>Docker</li><li>Docker Compose</li><li>Warden</li><li>DDEV</li><li>Linux</li><li>Git</li></ul></div>
         <div><h3>Frontend</h3><ul class="chips"><li>JavaScript</li><li>HTML</li><li>KnockoutJS</li><li>jQuery</li><li>Grunt</li><li>Nuxt.js</li><li>Vue Storefront</li><li>React</li></ul></div>
         <div><h3>Quality and workflow</h3><ul class="chips"><li>PHPUnit</li><li>Sentry</li><li>Azure DevOps</li><li>GitLab</li><li>Jira</li><li>YouTrack</li><li>ActiveCollab</li></ul></div>
+        <div><h3>AI-assisted development</h3><ul class="chips"><li class="hl">Claude Code</li><li class="hl">Codex CLI</li></ul><span class="lane-k">Skills</span><ul class="chips"><li>ponytail</li><li>brainstorm</li><li>superpowers</li><li>caveman</li></ul></div>
       </div>
     </div>
   </section>
@@ -436,7 +447,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <footer>
   <div class="wrap">
     <span>© 2026 Oleksandr Yavorskyi</span>
-    <span>Adobe Commerce full-stack developer</span>
+    <span>CV · Magento Developer</span>
   </div>
 </footer>
 
