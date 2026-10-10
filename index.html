@@ -7,11 +7,12 @@
 <meta property="og:title" content="CV Magento Developer Oleksandr Yavorskyi">
 <meta property="og:description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, full career, stack and contact.">
 <meta property="og:type" content="website">
+<script>(function(){var v='classic';try{var q=new URLSearchParams(location.search).get('v');if(['classic','order','changelog','terminal','modules'].indexOf(q)>-1)v=q;}catch(e){}document.documentElement.setAttribute('data-v',v);})();</script>
 <title>CV Magento Developer Oleksandr Yavorskyi</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d1a2f'/%3E%3Crect x='3' y='3' width='58' height='58' rx='10' fill='none' stroke='%237db2ff' stroke-width='2'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%237db2ff'%3EOY%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 body { margin: 0; }
 img { max-width: 100%; }
@@ -243,6 +244,296 @@ footer a { text-underline-offset: 3px; }
   .actions .btn, .mail-btns .btn { flex: 1 1 auto; }
 }
 </style>
+<style>
+/* ===== View switching: ?v=classic|order|changelog|terminal|modules ===== */
+html:not([data-v="classic"]) #v-classic { display: none; }
+html[data-v="classic"] #v-root { display: none; }
+
+.vswitch {
+  position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60;
+  display: flex; align-items: center; gap: 2px; padding: 4px; border-radius: 999px;
+  background: rgba(17, 20, 24, 0.9); color: #e9edf2; backdrop-filter: blur(8px);
+  font: 500 12.5px/1 'IBM Plex Sans', system-ui, sans-serif;
+  max-width: calc(100% - 24px); overflow-x: auto; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+.vswitch span { padding: 0 8px 0 10px; color: #9aa4b2; font: 500 11px/1 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+.vswitch a { padding: 8px 11px; border-radius: 999px; color: inherit; text-decoration: none; white-space: nowrap; }
+.vswitch a:hover { background: rgba(255, 255, 255, 0.12); }
+.vswitch a[aria-current="page"] { background: #fff; color: #111; }
+@media (max-width: 480px) { .vswitch span { display: none; } }
+
+/* ===================================================================
+   ORDER: a shipping label that follows one order through the stack
+   =================================================================== */
+html[data-v="order"] body { background: #e9ebe6; color: #14161a; }
+.vo {
+  --o-bg: #e9ebe6; --o-paper: #fbfbf8; --o-ink: #14161a; --o-mute: #565d68; --o-hair: #c7cbc2;
+  --o-hot: #ff5b14; --o-hot-soft: #ffe4d6; --o-hot-ink: #a83700; --o-ok: #17804a; --o-ok-soft: #dcf1e4; --o-idle: #e4e6e1;
+  font-family: var(--f-body); color: var(--o-ink); line-height: 1.55; padding-bottom: 80px;
+}
+.vo a { color: inherit; }
+.vo :focus-visible { outline: 2px solid var(--o-hot); outline-offset: 2px; }
+.o-wrap { width: min(100%, 1180px); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+.o-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 16px; }
+.o-top b { font-family: var(--f-display); font-stretch: 75%; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em; }
+.o-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px;
+  border: 2px solid var(--o-ink); border-radius: 3px; background: var(--o-paper); color: var(--o-ink);
+  text-decoration: none; font: 600 13px/1 var(--f-mono); text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
+}
+.o-btn:hover { background: var(--o-ink); color: var(--o-paper); }
+.o-btn--hot { background: var(--o-hot); }
+.o-btn--hot:hover { background: var(--o-ink); color: var(--o-hot); }
+
+.o-hero { padding-block: 4px clamp(36px, 6vw, 64px); }
+.o-label { background: var(--o-paper); border: 2px solid var(--o-ink); border-radius: 4px; display: grid; grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--o-ink); }
+@media (min-width: 900px) { .o-label { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); } }
+.o-label-main { padding: clamp(18px, 3.5vw, 36px); display: flex; flex-direction: column; align-items: flex-start; gap: 18px; min-width: 0; border-bottom: 2px solid var(--o-ink); }
+@media (min-width: 900px) { .o-label-main { border-bottom: 0; border-right: 2px solid var(--o-ink); } }
+.o-eyebrow { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font: 500 12px/1.4 var(--f-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--o-mute); }
+.o-eyebrow b { color: var(--o-ink); font-weight: 600; }
+.o-h1 { margin: 0; font-family: var(--f-display); font-stretch: 66%; font-weight: 850; text-transform: uppercase; font-size: clamp(2.6rem, 7.4vw, 5.6rem); line-height: 0.92; letter-spacing: 0; text-wrap: balance; }
+.o-h1 em { font-style: normal; background: var(--o-hot); padding: 0 0.08em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.o-lead { margin: 0; max-width: 56ch; font-size: clamp(1rem, 1.5vw, 1.12rem); color: var(--o-mute); }
+.o-lead b { color: var(--o-ink); }
+.o-side { display: flex; flex-direction: column; min-width: 0; }
+.o-fields { margin: 0; display: grid; grid-template-columns: 1fr 1fr; }
+.o-field { padding: 14px clamp(14px, 2.5vw, 22px); border-bottom: 2px solid var(--o-ink); display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.o-field:nth-child(1), .o-field:nth-child(4) { border-right: 2px solid var(--o-ink); }
+.o-field--wide { grid-column: 1 / -1; border-right: 0 !important; }
+.o-field dt { font: 500 11px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--o-mute); }
+.o-field dd { margin: 0; font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 1.12rem; line-height: 1.25; overflow-wrap: anywhere; }
+.o-field dd a { text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.o-bar { padding: 16px clamp(14px, 2.5vw, 22px); display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+.o-barcode { display: flex; height: 58px; overflow: hidden; }
+.o-barcode i { display: block; flex: none; background: var(--o-ink); }
+.o-barcode i.s { background: transparent; }
+.o-bar small { font: 500 12px/1 var(--f-mono); letter-spacing: 0.32em; }
+
+.o-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+@media (min-width: 900px) { .o-grid { grid-template-columns: 300px minmax(0, 1fr); gap: 40px; } }
+.o-panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); z-index: 5; background: var(--o-paper); border: 2px solid var(--o-ink); border-radius: 4px; font-family: var(--f-mono); font-size: 12.5px; }
+.o-panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 12px 14px; background: var(--o-ink); color: var(--o-paper); }
+.o-panel-head b { font-size: 15px; letter-spacing: 0.04em; }
+.o-k { font: 500 11px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--o-mute); margin: 0; }
+.o-rows { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; padding: 12px 14px; align-items: center; border-bottom: 1px dashed var(--o-hair); }
+.o-now { font-weight: 600; overflow-wrap: anywhere; }
+.o-pill { display: inline-block; justify-self: start; padding: 3px 8px; border-radius: 3px; border: 1.5px solid currentColor; font: 600 11.5px/1.3 var(--f-mono); }
+.o-pill--idle { color: var(--o-mute); background: var(--o-idle); }
+.o-pill--hot { color: var(--o-hot-ink); background: var(--o-hot-soft); }
+.o-pill--ok { color: var(--o-ok); background: var(--o-ok-soft); }
+.o-steps { list-style: none; margin: 0; padding: 10px 14px; display: flex; flex-direction: column; border-bottom: 1px dashed var(--o-hair); }
+.o-steps a { display: flex; align-items: center; gap: 10px; padding: 4px 0; text-decoration: none; color: var(--o-mute); }
+.o-steps a::before { content: ''; width: 10px; height: 10px; border: 1.5px solid currentColor; border-radius: 50%; flex: none; background: var(--o-paper); }
+.o-steps li.done a { color: var(--o-ink); }
+.o-steps li.done a::before { background: var(--o-ink); border-color: var(--o-ink); }
+.o-steps li.on a { color: var(--o-ink); font-weight: 600; }
+.o-steps li.on a::before { background: var(--o-hot); border-color: var(--o-ink); }
+.o-log-wrap { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.o-log { margin: 0; min-height: 8em; font: 11.5px/1.6 var(--f-mono); white-space: pre-wrap; overflow-wrap: anywhere; }
+.o-log span { color: var(--o-mute); }
+.o-log:empty::before { content: 'Nothing yet. Scroll to place the order.'; color: var(--o-mute); }
+@media (max-width: 899px) {
+  .o-panel { top: env(safe-area-inset-top, 0px); border-radius: 0; border-width: 0 0 2px; margin-inline: calc(-1 * clamp(16px, 4vw, 32px)); }
+  .o-panel-head { padding: 8px 16px; }
+  .o-rows { display: flex; flex-wrap: wrap; gap: 6px 10px; padding: 8px 16px; border-bottom: 0; }
+  .o-rows .o-k, .o-steps, .o-log-wrap { display: none; }
+}
+
+.o-stops { display: flex; flex-direction: column; gap: 28px; min-width: 0; position: relative; }
+.o-stops::before { content: ''; position: absolute; left: 30px; top: 0; bottom: 0; border-left: 2px dashed var(--o-ink); opacity: 0.35; }
+.o-stop { position: relative; background: var(--o-paper); border: 2px solid var(--o-ink); border-radius: 4px; padding: clamp(18px, 3vw, 28px); display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 96px; }
+.o-stop.on { box-shadow: 6px 6px 0 var(--o-hot); transform: translate(-2px, -2px); }
+@media (prefers-reduced-motion: no-preference) { .o-stop { transition: box-shadow 0.25s ease, transform 0.25s ease; } }
+.o-stop-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.o-num { font-family: var(--f-display); font-stretch: 66%; font-weight: 850; font-size: 2.4rem; line-height: 0.9; min-width: 2ch; }
+.o-sys { flex: 1 1 auto; min-width: 0; font: 500 12px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--o-mute); }
+.o-stop h2 { margin: 0; font-family: var(--f-display); font-stretch: 80%; font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.05; text-wrap: balance; }
+.o-text { margin: 0; color: var(--o-mute); max-width: 62ch; }
+.o-work { list-style: none; margin: 4px 0 0; padding: 0; border-top: 2px solid var(--o-ink); }
+.o-work li { display: grid; grid-template-columns: 1fr; gap: 2px 20px; padding: 12px 0; border-bottom: 1px dashed var(--o-hair); }
+.o-work li:last-child { border-bottom: 0; padding-bottom: 0; }
+@media (min-width: 640px) { .o-work li { grid-template-columns: 210px minmax(0, 1fr); } }
+.o-proj { font: 500 12px/1.45 var(--f-mono); color: var(--o-mute); }
+.o-proj b { display: block; color: var(--o-ink); font-weight: 600; }
+
+.o-end { padding-block: clamp(48px, 8vw, 96px) 24px; }
+.o-end-card { background: var(--o-paper); border: 2px solid var(--o-ink); border-radius: 4px; box-shadow: 6px 6px 0 var(--o-ink); padding: clamp(20px, 4vw, 40px); display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.o-stamp { transform: rotate(-4deg); border: 3px solid var(--o-ok); color: var(--o-ok); padding: 6px 14px; border-radius: 6px; font-family: var(--f-display); font-stretch: 66%; font-weight: 850; font-size: clamp(2rem, 6vw, 3.4rem); text-transform: uppercase; line-height: 1; letter-spacing: 0.04em; }
+.o-h2 { margin: 0; font-family: var(--f-display); font-stretch: 70%; font-weight: 850; text-transform: uppercase; font-size: clamp(1.9rem, 4.6vw, 3.2rem); line-height: 0.98; text-wrap: balance; }
+.o-contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.o-mail { font: 600 clamp(1rem, 2.4vw, 1.25rem)/1.3 var(--f-mono); user-select: all; overflow-wrap: anywhere; margin-right: 6px; }
+.o-career { align-self: stretch; display: flex; flex-direction: column; border-top: 2px solid var(--o-ink); }
+.o-career div { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 4px 16px; padding: 10px 0; border-bottom: 1px dashed var(--o-hair); }
+.o-career span { font: 500 12.5px/1.7 var(--f-mono); color: var(--o-mute); }
+.o-career em { display: block; font-style: normal; color: var(--o-mute); font-size: 13.5px; }
+.o-small { margin: 0; color: var(--o-mute); font-size: 14px; }
+
+/* ===================================================================
+   CHANGELOG: career as releases, one major version per project
+   =================================================================== */
+html[data-v="changelog"] body { background: #ffffff; color: #1c2128; }
+.vc {
+  --c-ink: #1c2128; --c-mute: #59636e; --c-line: #d8dee4; --c-soft: #f6f8fa; --c-acc: #0f766e;
+  --c-add: #1a7f37; --c-chg: #0969da; --c-fix: #9a6700; --c-rem: #cf222e;
+  font-family: var(--f-body); color: var(--c-ink); line-height: 1.6; padding-bottom: 80px;
+}
+.vc a { color: var(--c-chg); text-underline-offset: 3px; }
+.vc :focus-visible { outline: 2px solid var(--c-chg); outline-offset: 2px; }
+.c-wrap { width: min(100%, 1160px); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+.c-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--c-soft); border-bottom: 1px solid var(--c-line); }
+.c-bar-in { display: flex; align-items: center; gap: 12px; min-height: 52px; font: 14px var(--f-mono); }
+.c-repo { white-space: nowrap; }
+.c-repo b { font-weight: 600; }
+.c-file { color: var(--c-mute); padding-left: 12px; border-left: 1px solid var(--c-line); white-space: nowrap; }
+@media (max-width: 480px) { .c-file { display: none; } }
+.c-btn { margin-left: auto; padding: 6px 12px; border: 1px solid var(--c-line); border-radius: 6px; background: #fff; color: var(--c-ink) !important; text-decoration: none; font: 500 13px var(--f-body); white-space: nowrap; }
+.c-btn:hover { border-color: var(--c-mute); }
+.c-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; padding-block: clamp(28px, 5vw, 56px); }
+@media (min-width: 1000px) { .c-layout { grid-template-columns: minmax(0, 760px) 250px; justify-content: space-between; } }
+.c-head { display: flex; flex-direction: column; gap: 12px; padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid var(--c-line); }
+.c-name { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.05; letter-spacing: -0.015em; }
+.c-role { margin: 0; color: var(--c-mute); font-size: 1.08rem; }
+.c-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.c-badge { display: inline-flex; border-radius: 4px; overflow: hidden; font: 500 12px/1 var(--f-mono); text-decoration: none; color: #fff !important; }
+.c-badge span { padding: 6px 8px; background: #3d444d; }
+.c-badge span + span { background: var(--c-acc); }
+.c-md { margin: 0; font-family: var(--f-mono); font-weight: 600; line-height: 1.3; }
+.c-md i { font-style: normal; font-weight: 400; color: var(--c-mute); margin-right: 0.35em; }
+.c-h1 { font-size: 1.7rem; margin-bottom: 10px; }
+.c-p { margin: 0; color: var(--c-mute); max-width: 66ch; }
+.c-rels { position: relative; margin-top: 32px; }
+.c-rels::before { content: ''; position: absolute; left: 11px; top: 12px; bottom: 12px; width: 2px; background: var(--c-line); }
+.c-rel { position: relative; padding: 0 0 40px 44px; display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 72px; }
+.c-node { position: absolute; left: 4px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid var(--c-acc); }
+.c-node::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--c-acc); }
+.c-rel--open .c-node { border-style: dashed; }
+.c-rel--open .c-node::after { display: none; }
+.c-h2 { font-size: 1.3rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.c-date { font: 400 13px var(--f-mono); color: var(--c-mute); }
+.c-tag { font: 500 12px/1 var(--f-mono); padding: 4px 8px; border-radius: 999px; border: 1px solid var(--c-acc); color: var(--c-acc); }
+.c-title { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: 1.22rem; line-height: 1.3; }
+.c-roleline { display: block; font: 400 13px/1.5 var(--f-mono); color: var(--c-mute); }
+.c-sec { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+.c-h3 { font-size: 0.95rem; }
+.c-h3--added b { color: var(--c-add); }
+.c-h3--changed b { color: var(--c-chg); }
+.c-h3--fixed b { color: var(--c-fix); }
+.c-h3--removed b { color: var(--c-rem); }
+.c-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.c-list li { position: relative; padding-left: 24px; }
+.c-list li::before { position: absolute; left: 2px; top: 0; font: 600 14px/1.6 var(--f-mono); }
+.c-list--added li::before { content: '+'; color: var(--c-add); }
+.c-list--changed li::before { content: '~'; color: var(--c-chg); }
+.c-list--fixed li::before { content: '✓'; color: var(--c-fix); }
+.c-list--removed li::before { content: '−'; color: var(--c-rem); }
+.c-code { font: 12.5px/1.5 var(--f-mono); background: var(--c-soft); border: 1px solid var(--c-line); border-radius: 4px; padding: 1px 6px; overflow-wrap: anywhere; }
+.c-deps { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; }
+.c-dep-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.c-dep-list li { display: flex; flex-direction: column; gap: 6px; }
+.c-dep-list b { font-family: var(--f-mono); font-size: 13px; }
+.c-side-in { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+.c-k { margin: 14px 0 2px; font: 600 11.5px var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-mute); }
+.c-k:first-child { margin-top: 0; }
+.c-side ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.c-side ol a { display: flex; gap: 10px; padding: 5px 8px; border-radius: 6px; color: var(--c-ink); text-decoration: none; }
+.c-side ol a:hover { background: var(--c-soft); }
+.c-side ol a.on { background: var(--c-soft); box-shadow: inset 2px 0 0 var(--c-acc); }
+.c-side code { font: 12px/1.7 var(--f-mono); color: var(--c-mute); min-width: 50px; }
+@media (max-width: 999px) { .c-side { display: none; } }
+
+/* ===================================================================
+   TERMINAL: bin/magento as the page
+   =================================================================== */
+html[data-v="terminal"] { color-scheme: dark; }
+html[data-v="terminal"] body { background: #0b0e11; color: #d6dde3; }
+.vt {
+  --t-win: #12171c; --t-bar: #1a2027; --t-fg: #d6dde3; --t-mute: #8592a0; --t-g: #7bd88f; --t-y: #e8c27a; --t-c: #73c7d9; --t-r: #ff7b72; --t-line: #27303a;
+  font-family: var(--f-mono); color: var(--t-fg); min-height: 100vh;
+  padding: clamp(14px, 3vw, 32px) clamp(12px, 3vw, 32px) 84px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.vt a { color: var(--t-c); text-underline-offset: 3px; }
+.vt :focus-visible { outline: 2px solid var(--t-g); outline-offset: 2px; }
+.t-head { width: min(100%, 1000px); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+.t-head b { font-family: var(--f-display); font-size: 17px; font-weight: 700; color: #fff; }
+.t-win { width: min(100%, 1000px); background: var(--t-win); border: 1px solid var(--t-line); border-radius: 10px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.t-bar { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--t-bar); border-bottom: 1px solid var(--t-line); font-size: 12.5px; color: var(--t-mute); }
+.t-screen { height: min(66vh, 640px); min-height: 360px; overflow-y: auto; padding: 16px clamp(12px, 2.5vw, 20px); font-size: 14px; line-height: 1.6; cursor: text; }
+.t-out > div { white-space: pre-wrap; overflow-wrap: anywhere; margin-bottom: 0.6em; }
+.t-form { display: flex; align-items: baseline; flex-wrap: wrap; }
+.t-prompt { white-space: pre; }
+.t-form input { flex: 1 1 140px; min-width: 0; background: transparent; border: 0; outline: 0; padding: 0; color: var(--t-fg); font: inherit; caret-color: var(--t-g); }
+@media (max-width: 600px) { .t-form input { font-size: 16px; } .t-screen { font-size: 13px; } }
+.t-g { color: var(--t-g); } .t-y { color: var(--t-y); } .t-c { color: var(--t-c); } .t-m { color: var(--t-mute); } .t-r { color: var(--t-r); }
+.t-err { display: inline-block; background: #b3261e; color: #fff; padding: 0.6em 1.2em; margin: 0.2em 0; }
+.t-cmd { background: none; border: 0; padding: 0; font: inherit; color: var(--t-g); text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
+.t-cmd:hover { color: #a9f0b8; }
+.t-chips { width: min(100%, 1000px); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.t-chips span { color: var(--t-mute); font-size: 12px; margin-right: 2px; }
+.t-chips button { font: 500 13px var(--f-mono); color: var(--t-fg); background: var(--t-bar); border: 1px solid var(--t-line); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+.t-chips button:hover { border-color: var(--t-g); color: var(--t-g); }
+
+/* ===================================================================
+   MODULES: the CV as app/code/Yavorskyi in an IDE
+   =================================================================== */
+html[data-v="modules"] body { background: #eef0f3; color: #1f2328; }
+.vm {
+  --m-side: #f5f6f8; --m-ed: #ffffff; --m-line: #dcdfe4; --m-ink: #1f2328; --m-mute: #6e7781; --m-sel: #dbe6fb; --m-acc: #2f5fd0;
+  height: 100vh; height: 100dvh; display: grid; grid-template-rows: 46px minmax(0, 1fr) 28px;
+  font-family: var(--f-body); color: var(--m-ink); background: var(--m-ed);
+}
+.vm :focus-visible { outline: 2px solid var(--m-acc); outline-offset: -2px; }
+.m-top { display: flex; align-items: center; gap: 12px; padding-inline: 12px; border-bottom: 1px solid var(--m-line); background: var(--m-side); min-width: 0; }
+.m-proj { font: 600 13.5px var(--f-mono); white-space: nowrap; }
+.m-crumbs { flex: 1; min-width: 0; font: 12.5px var(--f-mono); color: var(--m-mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-btn { font: 500 13px var(--f-body); padding: 6px 12px; border: 1px solid var(--m-line); border-radius: 6px; background: #fff; color: var(--m-ink); cursor: pointer; white-space: nowrap; }
+.m-btn:hover { border-color: var(--m-mute); }
+.m-files-btn { display: none; }
+.m-body { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 0; position: relative; }
+.m-side { background: var(--m-side); border-right: 1px solid var(--m-line); overflow: auto; padding: 8px 0 24px; font: 13px/1.2 var(--f-mono); }
+.m-side-k { padding: 6px 14px 8px; font: 600 11px var(--f-body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--m-mute); }
+.m-node { display: flex; align-items: center; gap: 6px; width: 100%; border: 0; background: none; text-align: left; padding: 5px 10px; color: var(--m-ink); font: inherit; white-space: nowrap; cursor: pointer; }
+.m-node:hover { background: #e7eaee; }
+.m-node.on { background: var(--m-sel); }
+.m-caret { width: 12px; flex: none; color: var(--m-mute); font-size: 10px; }
+.m-folder { width: 15px; height: 11px; flex: none; border-radius: 2px; background: #d6a52a; position: relative; }
+.m-folder::before { content: ''; position: absolute; left: 0; top: -2px; width: 7px; height: 3px; border-radius: 2px 2px 0 0; background: #d6a52a; }
+.m-ico { flex: none; width: 28px; text-align: center; font-size: 10px; font-weight: 600; border-radius: 3px; padding: 1px 0; }
+.m-ico--xml { color: #b4410c; background: #fde7da; }
+.m-ico--php { color: #6d28d9; background: #ede4fb; }
+.m-ico--md { color: #1d4ed8; background: #e1e9fb; }
+.m-ico--json { color: #8a5a00; background: #fbf0d5; }
+.m-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.m-tabs { display: flex; overflow-x: auto; flex: none; border-bottom: 1px solid var(--m-line); background: var(--m-side); }
+.m-tab { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border: 0; border-right: 1px solid var(--m-line); background: none; font: 12.5px var(--f-mono); color: var(--m-mute); white-space: nowrap; cursor: pointer; }
+.m-tab.on { background: var(--m-ed); color: var(--m-ink); box-shadow: inset 0 -2px 0 var(--m-acc); }
+.m-path { flex: none; padding: 6px 16px; font: 12px var(--f-mono); color: var(--m-mute); border-bottom: 1px solid var(--m-line); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-code { flex: 1; overflow: auto; padding: 12px 0 64px; font: 13.5px/1.65 var(--f-mono); }
+.m-l { display: grid; grid-template-columns: 52px minmax(0, 1fr); }
+.m-n { text-align: right; padding-right: 16px; color: #a0a7b0; user-select: none; }
+.m-c { white-space: pre-wrap; overflow-wrap: anywhere; padding-right: 16px; min-height: 1.65em; }
+.m-l.hit { background: #fff6d6; }
+.hl-tag { color: #0033b3; } .hl-attr { color: #174ad4; } .hl-str { color: #067d17; } .hl-com { color: #8c8c8c; font-style: italic; }
+.hl-kw { color: #0033b3; font-weight: 600; } .hl-num { color: #1750eb; } .hl-var { color: #871094; }
+.hl-h { color: #0033b3; font-weight: 700; } .hl-b { font-weight: 700; } .hl-li { color: #174ad4; }
+.hl-a { color: var(--m-acc); text-underline-offset: 3px; }
+.m-status { display: flex; align-items: center; gap: 16px; padding-inline: 12px; border-top: 1px solid var(--m-line); background: var(--m-side); font: 11.5px var(--f-mono); color: var(--m-mute); white-space: nowrap; overflow: hidden; }
+@media (max-width: 760px) {
+  .m-files-btn { display: inline-flex; }
+  .m-body { grid-template-columns: minmax(0, 1fr); }
+  .m-side { position: absolute; inset: 0 auto 0 0; width: min(86vw, 320px); z-index: 20; transform: translateX(-105%); box-shadow: 8px 0 24px rgba(0, 0, 0, 0.12); visibility: hidden; }
+  .m-side.open { transform: none; visibility: visible; }
+  .m-crumbs { display: none; }
+  .m-proj { flex: 1; }
+  .m-code { font-size: 13px; }
+  .m-l { grid-template-columns: 36px minmax(0, 1fr); }
+  .m-n { padding-right: 10px; }
+  .m-status span:nth-child(n+3) { display: none; }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) { .m-side { transition: transform 0.2s ease, visibility 0.2s; } }
+.t-form input:focus-visible { outline: none; }
+</style>
 </head>
 <body>
 
@@ -267,6 +558,7 @@ footer a { text-underline-offset: 3px; }
   </defs>
 </svg>
 
+<div id="v-classic">
 <canvas id="bg" aria-hidden="true"></canvas>
 
 <header class="bar">
@@ -526,6 +818,8 @@ footer a { text-underline-offset: 3px; }
     <span><a href="https://www.linkedin.com/in/proseno" target="_blank" rel="noopener noreferrer">LinkedIn</a> · CV · Magento Developer</span>
   </div>
 </footer>
+</div>
+<div id="v-root"></div>
 
 <script>
 (function () {
@@ -559,6 +853,8 @@ footer a { text-underline-offset: 3px; }
       navigator.clipboard.writeText(mail.textContent.trim()).then(done, fallback);
     } catch (e) { fallback(); }
   });
+
+  if (root.getAttribute('data-v') !== 'classic') return;
 
   /* background: a faint network, with small packets travelling between nodes */
   var cv = document.getElementById('bg');
@@ -677,6 +973,718 @@ footer a { text-underline-offset: 3px; }
   resize();
   readColors();
   start();
+})();
+</script>
+<script>
+(function () {
+  var html = document.documentElement;
+  var V = html.getAttribute('data-v') || 'classic';
+  var VIEWS = [['classic', 'Classic'], ['order', 'Order'], ['changelog', 'Changelog'], ['terminal', 'Terminal'], ['modules', 'Modules']];
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- shared CV data ---------- */
+  var D = {
+    name: 'Oleksandr Yavorskyi',
+    role: 'Magento full-stack developer',
+    email: 'savorskij201@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/proseno',
+    cert: 'https://certification.adobe.com/credential/verify/3c91d8af-2d74-4f08-b385-b4b7ff478ce3',
+    certName: 'Adobe Certified Expert · Adobe Commerce Developer',
+    edu: 'Master’s degree in Cybersecurity, Khmelnytskyi National University',
+    langs: 'English (upper intermediate), Ukrainian (native)',
+    summary: 'I build and maintain high-load Magento 2 stores: custom PHP, B2B features, ERP and logistics integrations, version upgrades and production fixes.',
+    projects: [
+      { id: 'cosmetics', mod: 'CosmeticsMarketplace', years: '2026 – now', title: 'Cosmetics marketplace', role: 'Magento 2 Backend Developer',
+        ctx: 'A high-load marketplace for cosmetics and home goods. I own the customer account area and work with the iOS, Android, ERP and other Magento teams.',
+        added: ['Custom bundle product with several child products and its own stock and price calculation', 'Order change requests: customers edit a placed order by sending a request to support', 'PHPUnit and API tests for production changes'],
+        changed: ['Customer account moved from Vue Storefront to Nuxt.js, with the backend support it needed'],
+        fixed: ['Bad customer name data in Magento and the ERPs, with a console command tuned to run safely on production'],
+        tags: ['Magento 2', 'PHP', 'Nuxt.js', 'MySQL', 'Warden', 'PHPUnit'],
+        deps: ['Magento_Customer', 'Magento_Bundle', 'Magento_Catalog', 'Magento_CatalogInventory', 'Magento_Sales'] },
+      { id: 'tobacco', mod: 'TobaccoRetail', years: '2025 – 2026', title: 'EU tobacco and e-cigarette retailer', role: 'Magento 2 Backend Developer',
+        added: ['REST API support for managing attribute options from external systems'],
+        changed: ['Magento upgraded across several projects'],
+        fixed: ['Checkout blocker found and removed', 'Production-critical issues handled as the on-duty engineer'],
+        tags: ['Magento 2', 'PHP', 'REST API'],
+        deps: ['Magento_Checkout', 'Magento_Quote', 'Magento_Eav', 'Magento_Webapi'] },
+      { id: 'multivendor', mod: 'MultiVendorMarketplace', years: '2025', title: 'Multi-vendor marketplace', role: 'Magento 2 Full-Stack Developer',
+        added: ['Store set up from scratch', 'Nova Poshta delivery integration'],
+        changed: ['Customer account, product page, listing and review layouts customised to the design'],
+        tags: ['Magento 2', 'PHP', 'Nova Poshta', 'JavaScript'],
+        deps: ['Magento_Shipping', 'Magento_Catalog', 'Magento_Customer', 'Magento_Review'] },
+      { id: 'remote', mod: 'RemoteAccessSoftware', years: '2024 – 2025', title: 'Remote-access software vendor', role: 'Magento 2 Full-Stack Developer',
+        ctx: 'A global provider of remote connectivity software with a long-lived Adobe Commerce codebase.',
+        added: ['CSP policies'],
+        changed: ['Adobe Commerce upgraded, with the security patch and encryption key rotation', 'Adyen payment module updated with all custom logic kept in place', 'Marketo integration refactored for leads and opportunities', 'Firebear_ImportExport brought to the latest version after 5 years of customisation'],
+        fixed: ['Sentry issues'],
+        removed: ['Unneeded Elasticsearch modules'],
+        tags: ['Adobe Commerce', 'Adyen', 'Marketo', 'Sentry', 'DDEV', 'React'],
+        deps: ['Magento_Payment', 'Magento_Sales', 'Magento_ImportExport', 'Magento_Csp'] },
+      { id: 'b2b', mod: 'B2bConstruction', years: '2023 – 2024', title: 'B2B construction materials seller', role: 'Magento 2 Full-Stack Developer',
+        ctx: 'A global building materials seller moved from manual ordering to an Adobe Commerce store that automates the process.',
+        added: ['SAP ERP and PIM integration, including the mapping between SAP and Adobe Commerce entities', 'Custom attributes on orders, quotes and products'],
+        changed: ['B2B features customised: quick order, company accounts, requisition lists and negotiable quotes', 'Requisition list page rebuilt on a listing UI component with ajax reload', 'Deployed and maintained on Adobe Commerce Cloud'],
+        tags: ['Adobe Commerce Cloud', 'SAP', 'PIM', 'KnockoutJS', 'Docker', 'Warden'],
+        deps: ['Magento_Company', 'Magento_QuickOrder', 'Magento_RequisitionList', 'Magento_NegotiableQuote', 'Magento_Sales'] },
+      { id: 'gcc', mod: 'GccCosmetics', years: '2021 – 2023', title: 'GCC cosmetics retailer', role: 'Magento 2 Backend Developer',
+        ctx: 'A distributor of cosmetic brands in the Gulf region and Egypt. Magento 2 ran headless behind a Salesforce front end.',
+        added: ['Salesforce Commerce Cloud sync for orders, products, prices and inventory through XML files and cron jobs', 'Arabic PDF invoices with the QR code needed for KSA e-invoicing (helped build)', 'Module that archives large tables on a schedule to shrink the MySQL database', 'SMS verification', 'SFTP reporting'],
+        changed: ['Aramex integration maintained and refactored for order status, history and inventory', 'Varnish rolled out on every website (helped)'],
+        tags: ['Magento 2', 'Salesforce', 'Aramex', 'Varnish', 'Cron', 'MySQL'],
+        deps: ['Magento_Sales', 'Magento_Cron', 'Magento_PageCache', 'Magento_Shipping', 'Magento_CatalogInventory'] },
+      { id: 'clothing', mod: 'B2bClothing', years: '2020 – 2021', title: 'B2B clothing retailer, EU', role: 'Magento 2 Backend Developer',
+        added: ['Custom modules', 'Delivery integration where suppliers create and delete shipments themselves', 'Invoices and labels saved and cleaned up by cron'],
+        changed: ['Layered navigation'],
+        fixed: ['Product collection and pagination'],
+        tags: ['Magento 2', 'PHP', 'Cron'],
+        deps: ['Magento_Catalog', 'Magento_LayeredNavigation', 'Magento_Shipping', 'Magento_Cron'] },
+      { id: 'motorboat', mod: 'MotorboatParts', years: '2019 – 2020', title: 'Motorboat parts shop', role: 'Magento 2 Backend Developer',
+        added: ['Third-party extension integration'],
+        changed: ['Magento updated from 2.2 to 2.3', 'Page speed optimised', 'Design changes'],
+        tags: ['Magento 2', 'PHP'],
+        deps: ['Magento_Theme', 'Magento_Catalog'] }
+    ],
+    stack: [
+      ['Platform', ['Magento 2', 'Adobe Commerce', 'Adobe Commerce Cloud', 'Magento Open Source']],
+      ['AI-assisted development', ['Claude Code', 'Codex CLI', 'skills: ponytail, brainstorm, superpowers, caveman']],
+      ['Backend', ['PHP', 'SOLID', 'CQRS', 'REST API', 'GraphQL', 'Composer']],
+      ['Data and speed', ['MySQL', 'Redis', 'Elasticsearch', 'Varnish']],
+      ['Async', ['RabbitMQ', 'AMQP', 'Cron', 'Queue']],
+      ['Environment', ['Nginx', 'Docker', 'Docker Compose', 'Warden', 'DDEV', 'Linux', 'Git']],
+      ['Frontend', ['JavaScript', 'HTML', 'KnockoutJS', 'jQuery', 'Grunt', 'Nuxt.js', 'Vue Storefront', 'React']],
+      ['Quality and workflow', ['PHPUnit', 'Sentry', 'Azure DevOps', 'GitLab', 'Jira', 'YouTrack', 'ActiveCollab']]
+    ],
+    integrations: [
+      ['SAP ERP', 'b2b'], ['PIM', 'b2b'], ['Salesforce', 'gcc'], ['Aramex', 'gcc'], ['Nova Poshta', 'multivendor'],
+      ['Adyen', 'remote'], ['Marketo', 'remote'], ['Varnish', 'gcc']
+    ],
+    stops: [
+      { key: 'storefront', short: 'Storefront', sys: 'Storefront · Varnish · Nginx', status: 'no order yet',
+        title: 'A customer opens the store',
+        text: 'Most pages come straight from the Varnish cache, so PHP only runs when it has to. The front end can be a Magento theme or a separate headless app.',
+        log: 'GET /  varnish HIT  200',
+        work: [['gcc', 'Helped roll out Varnish on every website'], ['motorboat', 'Page speed optimisation'], ['cosmetics', 'Moved the customer account from Vue Storefront to Nuxt.js, with the backend support it needed'], ['multivendor', 'Customised account, product page, listing and review layouts to the design']] },
+      { key: 'cart', short: 'Cart', sys: 'Magento 2 · Quote', status: 'quote',
+        title: 'Products go into the cart',
+        text: 'In Magento a cart is a quote. Product types, prices and stock are resolved here, and B2B buyers get their own tools.',
+        log: 'POST /checkout/cart/add  quote updated',
+        work: [['cosmetics', 'Custom bundle product with several child products and its own stock and price calculation'], ['b2b', 'Quick order, company accounts, requisition lists and negotiable quotes'], ['b2b', 'Requisition list page rebuilt on a listing UI component with ajax reload'], ['b2b', 'Custom attributes on quotes, orders and products']] },
+      { key: 'checkout', short: 'Checkout', sys: 'Checkout · Adyen', status: 'pending_payment',
+        title: 'Checkout and payment',
+        text: 'The quote becomes an order and waits for the payment provider.',
+        log: 'sales_order_place_after  pending_payment',
+        work: [['tobacco', 'Found and removed what blocked checkout'], ['remote', 'Updated the Adyen payment module and kept all custom logic in place'], ['gcc', 'SMS verification']] },
+      { key: 'queue', short: 'Queue', sys: 'RabbitMQ · Cron', status: 'processing',
+        title: 'Heavy work leaves the request',
+        text: 'Exports, syncs and cleanups run in queue consumers and cron jobs, so checkout stays fast.',
+        log: 'queue publish  order.export',
+        work: [['gcc', 'Synced orders, products, prices and inventory with Salesforce Commerce Cloud through XML files and cron jobs'], ['gcc', 'Module that archives large tables on a schedule to keep the MySQL database small'], ['clothing', 'Invoices and labels saved and cleaned up by cron']] },
+      { key: 'erp', short: 'ERP', sys: 'SAP · PIM · Salesforce · Marketo', status: 'processing',
+        title: 'Back-office systems get the order',
+        text: 'The ERP, PIM and CRM need the same order, product and customer data, mapped to their own entities.',
+        log: 'erp.export  accepted',
+        work: [['b2b', 'SAP ERP and PIM integration, including the mapping between SAP and Adobe Commerce entities'], ['remote', 'Refactored the Marketo integration that sends leads and opportunities'], ['tobacco', 'REST API support for managing attribute options from external systems'], ['cosmetics', 'Console command that fixes bad customer name data in Magento and the ERPs, tuned to run safely on production']] },
+      { key: 'invoice', short: 'Invoice', sys: 'Invoice', status: 'processing',
+        title: 'The invoice is created',
+        text: 'Some markets need more than a standard PDF.',
+        log: 'sales_order_invoice_pay  invoice created',
+        work: [['gcc', 'Helped build Arabic PDF invoices with the QR code needed for KSA e-invoicing']] },
+      { key: 'shipping', short: 'Shipping', sys: 'Aramex · Nova Poshta', status: 'complete',
+        title: 'The parcel ships',
+        text: 'The carrier gets the shipment, and tracking and status flow back into Magento.',
+        log: 'carrier  tracking number created',
+        work: [['gcc', 'Maintained and refactored the Aramex integration for order status, history and inventory'], ['multivendor', 'Nova Poshta delivery integration'], ['clothing', 'Delivery integration where suppliers create and delete shipments themselves']] },
+      { key: 'after', short: 'After', sys: 'Production', status: 'complete',
+        title: 'The store keeps running',
+        text: 'The order is complete. The platform under it still needs upgrades and someone who owns it.',
+        log: 'state=complete  status=complete',
+        work: [['cosmetics', 'Order change requests: customers edit a placed order by sending a request to support'], ['tobacco', 'On-duty engineer for production-critical issues'], ['tobacco', 'Magento upgrades across several projects'], ['remote', 'Adobe Commerce upgrade with the security patch and encryption key rotation'], ['remote', 'Firebear_ImportExport brought to the latest version after 5 years of customisation']] }
+    ]
+  };
+  D.projects.forEach(function (p, i) { p.ver = (D.projects.length - i) + '.0.0'; p.n = i + 1; });
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function proj(id) { for (var i = 0; i < D.projects.length; i++) if (D.projects[i].id === id) return D.projects[i]; return null; }
+  function points(p) { return [].concat(p.added || [], p.changed || [], p.fixed || [], p.removed || []); }
+  function ext(href) { return 'href="' + esc(href) + '" target="_blank" rel="noopener noreferrer"'; }
+  function copyOn(btn, text) {
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var label = btn.textContent;
+      try {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = label; }, 1600);
+        }, function () {});
+      } catch (e) {}
+    });
+  }
+
+  /* ---------- design switcher (only when ?v= is in the address) ---------- */
+  if (/[?&]v=/.test(location.search)) {
+    var nav = document.createElement('nav');
+    nav.className = 'vswitch';
+    nav.setAttribute('aria-label', 'Page designs');
+    nav.innerHTML = '<span>View</span>' + VIEWS.map(function (v) {
+      return '<a href="?v=' + v[0] + '"' + (v[0] === V ? ' aria-current="page"' : '') + '>' + v[1] + '</a>';
+    }).join('');
+    document.body.appendChild(nav);
+  }
+
+  var root = document.getElementById('v-root');
+  if (!root || V === 'classic') return;
+  ({ order: renderOrder, changelog: renderChangelog, terminal: renderTerminal, modules: renderModules })[V](root);
+
+  /* =================================================================
+     ORDER
+     ================================================================= */
+  function renderOrder(root) {
+    root.className = 'vo';
+    var S = D.stops;
+    var ORDER = '#000000127';
+    function field(k, v, wide) { return '<div class="o-field' + (wide ? ' o-field--wide' : '') + '"><dt>' + k + '</dt><dd>' + v + '</dd></div>'; }
+    function barcode(str) {
+      var out = '';
+      for (var i = 0; i < str.length; i++) {
+        var c = str.charCodeAt(i);
+        var w = [1 + (c % 3), 1 + ((c >> 2) % 2), 1 + ((c >> 3) % 3), 1 + ((c >> 1) % 2)];
+        for (var k = 0; k < 4; k++) out += '<i' + (k % 2 ? ' class="s"' : '') + ' style="width:' + (w[k] * 2) + 'px"></i>';
+      }
+      return out;
+    }
+    function pillClass(s) { return s === 'complete' ? 'ok' : (s === 'pending_payment' || s === 'processing') ? 'hot' : 'idle'; }
+
+    var h = '';
+    h += '<header class="o-wrap o-top"><b>' + esc(D.name) + '</b><a class="o-btn" href="#o-delivered">Contact</a></header>';
+    h += '<section class="o-wrap o-hero"><div class="o-label">'
+      + '<div class="o-label-main">'
+      + '<p class="o-eyebrow"><b>Order ' + ORDER + '</b><span>CV · Magento full-stack developer</span></p>'
+      + '<h1 class="o-h1">Follow one order through the systems <em>I build</em></h1>'
+      + '<p class="o-lead">I’m <b>' + esc(D.name) + '</b>. Scroll down and this order travels from the storefront through checkout, queues and the ERP to the carrier. Each stop shows what I built there.</p>'
+      + '<a class="o-btn o-btn--hot" href="#o-' + S[0].key + '">Place the order ↓</a>'
+      + '</div>'
+      + '<div class="o-side"><dl class="o-fields">'
+      + field('From', 'Storefront') + field('To', 'ERP · Carrier')
+      + field('Handled by', esc(D.name), true)
+      + field('Experience', '6+ years') + field('Projects', '8')
+      + field('Certified', '<a ' + ext(D.cert) + '>Adobe Commerce Developer ↗</a>', true)
+      + '</dl><div class="o-bar"><div class="o-barcode" aria-hidden="true">' + barcode('OLEKSANDR YAVORSKYI MAGENTO 2') + '</div><small>000000127 · YAVORSKYI</small></div></div>'
+      + '</div></section>';
+
+    h += '<div class="o-wrap o-grid">';
+    h += '<aside class="o-panel" aria-label="Order status">'
+      + '<div class="o-panel-head"><span>ORDER</span><b>' + ORDER + '</b></div>'
+      + '<div class="o-rows"><p class="o-k">Status</p><span class="o-pill o-pill--idle" id="o-status">not placed</span>'
+      + '<p class="o-k">Now at</p><span class="o-now" id="o-now">Scroll to start</span></div>'
+      + '<ol class="o-steps" id="o-steps">' + S.map(function (s, i) { return '<li data-i="' + i + '"><a href="#o-' + s.key + '">' + esc(s.short) + '</a></li>'; }).join('') + '</ol>'
+      + '<div class="o-log-wrap"><p class="o-k">Event log · illustrative</p><pre class="o-log" id="o-log"></pre></div>'
+      + '</aside>';
+    h += '<div class="o-stops">' + S.map(function (s, i) {
+      return '<section class="o-stop" id="o-' + s.key + '" data-i="' + i + '">'
+        + '<div class="o-stop-head"><span class="o-num">' + (i < 9 ? '0' : '') + (i + 1) + '</span><span class="o-sys">' + esc(s.sys) + '</span><span class="o-pill o-pill--' + pillClass(s.status) + '">' + esc(s.status) + '</span></div>'
+        + '<h2>' + esc(s.title) + '</h2><p class="o-text">' + esc(s.text) + '</p>'
+        + '<ul class="o-work">' + s.work.map(function (w) {
+          var p = proj(w[0]);
+          return '<li><span class="o-proj"><b>' + esc(p.title) + '</b>' + esc(p.years) + '</span><span>' + esc(w[1]) + '</span></li>';
+        }).join('') + '</ul></section>';
+    }).join('') + '</div></div>';
+
+    h += '<section class="o-end" id="o-delivered"><div class="o-wrap"><div class="o-end-card">'
+      + '<div class="o-stamp">Delivered</div>'
+      + '<h2 class="o-h2">Need this path built or fixed in your store?</h2>'
+      + '<p class="o-lead">Write to me by email or on LinkedIn.</p>'
+      + '<div class="o-contact"><span class="o-mail">' + esc(D.email) + '</span>'
+      + '<button class="o-btn" type="button" id="o-copy">Copy</button>'
+      + '<a class="o-btn o-btn--hot" href="mailto:' + esc(D.email) + '">Email</a>'
+      + '<a class="o-btn" ' + ext(D.linkedin) + '>LinkedIn</a></div>'
+      + '<p class="o-k">Full career</p><div class="o-career">' + D.projects.map(function (p) {
+        return '<div><span>' + esc(p.years) + '</span><p style="margin:0"><b>' + esc(p.title) + '</b><em>' + esc(p.role) + '</em></p></div>';
+      }).join('') + '</div>'
+      + '<p class="o-small">' + esc(D.edu) + ' · ' + esc(D.langs) + '</p>'
+      + '</div></div></section>';
+
+    root.innerHTML = h;
+    copyOn(document.getElementById('o-copy'), D.email);
+
+    var statusEl = document.getElementById('o-status');
+    var nowEl = document.getElementById('o-now');
+    var logEl = document.getElementById('o-log');
+    var steps = root.querySelectorAll('#o-steps li');
+    var stops = root.querySelectorAll('.o-stop');
+    var current = -1;
+    function update(i) {
+      if (i === current) return;
+      current = i;
+      var s = S[i];
+      statusEl.textContent = s.status;
+      statusEl.className = 'o-pill o-pill--' + pillClass(s.status);
+      nowEl.textContent = s.sys;
+      for (var k = 0; k < steps.length; k++) {
+        steps[k].className = k < i ? 'done' : k === i ? 'on' : '';
+        stops[k].classList.toggle('on', k === i);
+      }
+      logEl.innerHTML = S.slice(0, i + 1).map(function (x, k) { return '<span>[+' + (k * 0.4).toFixed(1) + 's]</span> ' + esc(x.log); }).join('\n');
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) update(+e.target.getAttribute('data-i')); });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      for (var k = 0; k < stops.length; k++) io.observe(stops[k]);
+    }
+  }
+
+  /* =================================================================
+     CHANGELOG
+     ================================================================= */
+  function renderChangelog(root) {
+    root.className = 'vc';
+    var TYPES = [['added', 'Added'], ['changed', 'Changed'], ['fixed', 'Fixed'], ['removed', 'Removed']];
+    function badge(a, b, href) {
+      var inner = '<span>' + esc(a) + '</span><span>' + esc(b) + '</span>';
+      return href ? '<a class="c-badge" ' + ext(href) + '>' + inner + '</a>' : '<span class="c-badge">' + inner + '</span>';
+    }
+    function code(t) { return '<code class="c-code">' + esc(t) + '</code>'; }
+
+    var h = '<div class="c-bar"><div class="c-wrap c-bar-in"><span class="c-repo">yavorskyi / <b>career</b></span><span class="c-file">CHANGELOG.md</span><a class="c-btn" href="#c-unreleased">Contact</a></div></div>';
+    h += '<div class="c-wrap c-layout"><main class="c-doc">';
+    h += '<header class="c-head"><h1 class="c-name">' + esc(D.name) + '</h1>'
+      + '<p class="c-role">Magento full-stack developer. One major release per project since 2019.</p>'
+      + '<div class="c-badges">' + badge('adobe certified', 'commerce developer', D.cert) + badge('magento', '6+ years') + badge('projects', '8') + badge('english', 'upper intermediate') + '</div></header>';
+    h += '<h2 class="c-md c-h1"><i>#</i>Changelog</h2>'
+      + '<p class="c-p">All notable changes to my career are documented in this file. The format is based on Keep a Changelog, with one major version per project.</p>';
+    h += '<div class="c-rels">';
+    h += '<section class="c-rel c-rel--open" id="c-unreleased"><span class="c-node"></span>'
+      + '<h3 class="c-md c-h2"><span><i>##</i>[Unreleased]</span></h3>'
+      + '<div class="c-sec"><h4 class="c-md c-h3 c-h3--added"><i>###</i><b>Added</b></h4><ul class="c-list c-list--added">'
+      + '<li>Your project. Write to <a href="mailto:' + esc(D.email) + '">' + esc(D.email) + '</a> or on <a ' + ext(D.linkedin) + '>LinkedIn</a>.</li>'
+      + '</ul></div></section>';
+    D.projects.forEach(function (p) {
+      h += '<section class="c-rel" id="c-v' + p.n + '"><span class="c-node"></span>'
+        + '<h3 class="c-md c-h2"><span><i>##</i>[' + p.ver + ']</span><span class="c-date">' + esc(p.years) + '</span><span class="c-tag">v' + p.ver + '</span></h3>'
+        + '<p class="c-title">' + esc(p.title) + '<span class="c-roleline">' + esc(p.role) + '</span></p>'
+        + (p.ctx ? '<p class="c-p">' + esc(p.ctx) + '</p>' : '');
+      TYPES.forEach(function (t) {
+        if (!p[t[0]] || !p[t[0]].length) return;
+        h += '<div class="c-sec"><h4 class="c-md c-h3 c-h3--' + t[0] + '"><i>###</i><b>' + t[1] + '</b></h4><ul class="c-list c-list--' + t[0] + '">'
+          + p[t[0]].map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+      });
+      h += '<p class="c-deps">' + p.tags.map(code).join('') + '</p></section>';
+    });
+    h += '</div>';
+    h += '<h2 class="c-md c-h1" id="c-deps"><i>#</i>Dependencies</h2><ul class="c-dep-list">'
+      + D.stack.map(function (g) { return '<li><b>' + esc(g[0]) + '</b><p class="c-deps">' + g[1].map(code).join('') + '</p></li>'; }).join('')
+      + '</ul>';
+    h += '<p class="c-p" style="margin-top:24px">' + esc(D.edu) + '. ' + esc(D.langs) + '.</p>';
+    h += '</main>';
+    h += '<aside class="c-side"><div class="c-side-in"><p class="c-k">Releases</p><ol>'
+      + '<li><a href="#c-unreleased" data-t="c-unreleased"><code>next</code>Your project</a></li>'
+      + D.projects.map(function (p) { return '<li><a href="#c-v' + p.n + '" data-t="c-v' + p.n + '"><code>v' + p.ver + '</code>' + esc(p.title) + '</a></li>'; }).join('')
+      + '</ol><p class="c-k">Certified</p><a ' + ext(D.cert) + '>Adobe Commerce Developer ↗</a>'
+      + '<p class="c-k">Contact</p><a href="mailto:' + esc(D.email) + '">' + esc(D.email) + '</a><a ' + ext(D.linkedin) + '>LinkedIn ↗</a>'
+      + '</div></aside></div>';
+    root.innerHTML = h;
+
+    if ('IntersectionObserver' in window) {
+      var links = root.querySelectorAll('.c-side ol a');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          for (var i = 0; i < links.length; i++) links[i].classList.toggle('on', links[i].getAttribute('data-t') === e.target.id);
+        });
+      }, { rootMargin: '-25% 0px -65% 0px' });
+      root.querySelectorAll('.c-rel').forEach(function (s) { io.observe(s); });
+    }
+  }
+
+  /* =================================================================
+     TERMINAL
+     ================================================================= */
+  function renderTerminal(root) {
+    root.className = 'vt';
+    var PROMPT = '<span class="t-g">oleksandr@yavorskyi</span><span class="t-m">:</span><span class="t-c">~/magento</span><span class="t-m">$</span> ';
+    var CHIPS = ['about', 'career:list', 'career:show 1', 'integrations:list', 'stack:show', 'contact', 'cache:flush'];
+    root.innerHTML = '<header class="t-head"><span><b>' + esc(D.name) + '</b> <span class="t-m">· Magento full-stack developer</span></span><a href="?v=classic">Classic view</a></header>'
+      + '<div class="t-win"><div class="t-bar"><span>oleksandr@yavorskyi: ~/magento</span><span>bin/magento</span></div>'
+      + '<div class="t-screen" id="t-screen"><div class="t-out" id="t-out" role="log" aria-live="polite"></div>'
+      + '<form class="t-form" id="t-form"><label class="t-prompt" for="t-input">' + PROMPT + '</label>'
+      + '<input id="t-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Command"></form></div></div>'
+      + '<div class="t-chips"><span>Try:</span>' + CHIPS.map(function (c) { return '<button type="button" data-cmd="' + c + '">' + c + '</button>'; }).join('') + '</div>';
+
+    var out = document.getElementById('t-out');
+    var screen = document.getElementById('t-screen');
+    var input = document.getElementById('t-input');
+    var form = document.getElementById('t-form');
+    var hist = [], hi = 0, typing = null;
+    var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+    function sp(n) { return new Array(Math.max(1, n) + 1).join(' '); }
+    function pad(s, n) { s = String(s); return s + sp(n - s.length); }
+    function link(cmd, label) { return '<button class="t-cmd" type="button" data-cmd="' + esc(cmd) + '">' + esc(label || cmd) + '</button>'; }
+    function y(s) { return '<span class="t-y">' + s + '</span>'; }
+    function g(s) { return '<span class="t-g">' + s + '</span>'; }
+    function m(s) { return '<span class="t-m">' + s + '</span>'; }
+    function err(s) { return '<span class="t-err">' + esc(s) + '</span>'; }
+    function print(htmlStr) {
+      var d = document.createElement('div');
+      d.innerHTML = htmlStr;
+      out.appendChild(d);
+      screen.scrollTop = screen.scrollHeight;
+    }
+
+    var CMDS = {
+      help: list, list: list,
+      about: function () {
+        return g(esc(D.name)) + '\nMagento full-stack developer · 6+ years · 8 projects\n\n' + esc(D.summary) + '\n\n'
+          + y(pad('Certified', 12)) + '<a ' + ext(D.cert) + '>' + esc(D.certName) + '</a>\n'
+          + y(pad('Education', 12)) + esc(D.edu) + '\n'
+          + y(pad('Languages', 12)) + esc(D.langs) + '\n\n'
+          + 'Next: ' + link('career:list') + '  ' + link('contact');
+      },
+      contact: function () {
+        return y(pad('Email', 10)) + '<a href="mailto:' + esc(D.email) + '">' + esc(D.email) + '</a>\n'
+          + y(pad('LinkedIn', 10)) + '<a ' + ext(D.linkedin) + '>linkedin.com/in/proseno</a>\n\n'
+          + m('Tell me about your store and what needs to be built, upgraded or fixed.');
+      },
+      'career:list': function () {
+        var s = y(' #  ' + pad('Years', 13) + 'Project') + '\n';
+        D.projects.forEach(function (p) {
+          s += ' ' + link('career:show ' + p.n, String(p.n)) + '  ' + pad(p.years, 13) + g(esc(p.title)) + '  ' + m(esc(p.role)) + '\n';
+        });
+        return s + '\nTap a number or run ' + link('career:show 1') + '.';
+      },
+      'career:show': function (args) {
+        if (!args[0]) return err('Not enough arguments (missing: "project").') + '\nUsage: career:show <1-' + D.projects.length + '>';
+        var p = D.projects[parseInt(args[0], 10) - 1];
+        if (!p) return err('Project "' + args[0] + '" not found. Use a number from 1 to ' + D.projects.length + '.');
+        var s = y('[' + p.ver + ']') + ' ' + g(esc(p.title)) + '  ' + m(esc(p.years)) + '\n' + esc(p.role) + '\n';
+        if (p.ctx) s += m(esc(p.ctx)) + '\n';
+        s += '\n';
+        (p.added || []).forEach(function (x) { s += g(' + ') + esc(x) + '\n'; });
+        (p.changed || []).forEach(function (x) { s += '<span class="t-c"> ~ </span>' + esc(x) + '\n'; });
+        (p.fixed || []).forEach(function (x) { s += y(' ✓ ') + esc(x) + '\n'; });
+        (p.removed || []).forEach(function (x) { s += '<span class="t-r"> - </span>' + esc(x) + '\n'; });
+        s += '\n' + y('Stack') + '  ' + esc(p.tags.join(' · ')) + '\n\n';
+        if (p.n > 1) s += link('career:show ' + (p.n - 1), '← newer') + '  ';
+        if (p.n < D.projects.length) s += link('career:show ' + (p.n + 1), 'older →');
+        return s;
+      },
+      'stack:show': function () {
+        return D.stack.map(function (gr) { return y(pad(gr[0], 25)) + esc(gr[1].join(', ')); }).join('\n');
+      },
+      'integrations:list': function () {
+        return y(pad('System', 14) + 'Project') + '\n' + D.integrations.map(function (r) {
+          var p = proj(r[1]);
+          return g(pad(r[0], 14)) + esc(p.title) + '  ' + link('career:show ' + p.n, '#' + p.n);
+        }).join('\n');
+      },
+      'cert:verify': function () {
+        return esc(D.certName) + '\n<a ' + ext(D.cert) + '>Verify the credential on certification.adobe.com ↗</a>';
+      },
+      'cache:flush': flushed, 'cache:clean': flushed,
+      'setup:upgrade': function () {
+        return 'Cache cleared successfully\nUpdating modules:\nSchema creation/Updates:\nModule \'Yavorskyi_Career\':\n'
+          + 'Please re-run Magento compile command. Use the command "' + link('setup:di:compile') + '"';
+      },
+      'setup:di:compile': function () {
+        return 'Compilation was started.\nInterceptors generation... 7/7 [============================] 100%\n'
+          + g('Generated code and dependency injection configuration successfully.');
+      },
+      view: function (args) {
+        var ok = VIEWS.map(function (v) { return v[0]; });
+        if (ok.indexOf(args[0]) < 0) return err('Unknown view. Use: view ' + ok.join('|'));
+        setTimeout(function () { location.search = '?v=' + args[0]; }, 350);
+        return 'Switching to ' + esc(args[0]) + '…';
+      },
+      exit: function () { return CMDS.view(['classic']); }
+    };
+    var NAMES = Object.keys(CMDS).concat(['clear']);
+
+    function list() {
+      var groups = [
+        ['', [['about', 'Who I am and what I do'], ['contact', 'Email and LinkedIn'], ['help', 'List all commands'], ['clear', 'Clear the screen']]],
+        ['career', [['career:list', 'All 8 projects, newest first'], ['career:show', 'One project in detail, e.g. career:show 3']]],
+        ['stack', [['stack:show', 'Tools and AI setup I work with']]],
+        ['integrations', [['integrations:list', 'External systems I connected Magento to']]],
+        ['cert', [['cert:verify', 'Adobe certification credential']]],
+        ['cache', [['cache:flush', 'Flush Magento cache types']]],
+        ['view', [['view', 'Switch page design: view classic|order|changelog|modules']]]
+      ];
+      var s = y('Usage:') + '\n  command [arguments]\n\n' + y('Available commands:') + '\n';
+      groups.forEach(function (gr) {
+        if (gr[0]) s += ' ' + y(gr[0]) + '\n';
+        gr[1].forEach(function (c) { s += '  ' + link(c[0] === 'career:show' ? 'career:show 1' : c[0], c[0]) + sp(20 - c[0].length) + esc(c[1]) + '\n'; });
+      });
+      return s;
+    }
+    function flushed() {
+      return 'Flushed cache types:\n' + ['config', 'layout', 'block_html', 'collections', 'reflection', 'db_ddl', 'compiled_config', 'eav', 'customer_notification', 'config_integration', 'config_integration_api', 'full_page', 'config_webservice', 'translate'].join('\n')
+        + '\n\n' + m('Same developer, fresh cache.');
+    }
+
+    function run(raw) {
+      var line = raw.trim();
+      print(PROMPT + esc(raw));
+      if (!line) return;
+      hist.push(line); hi = hist.length;
+      var cmd = line.replace(/^(php\s+)?bin\/magento\s*/, '') || 'list';
+      var parts = cmd.split(/\s+/), name = parts[0], args = parts.slice(1);
+      if (name === 'clear') { out.innerHTML = ''; return; }
+      var fn = CMDS[name];
+      if (!fn) {
+        var near = NAMES.filter(function (n) { return n.indexOf(name) > -1 || (name.indexOf(':') < 0 && n.split(':')[0] === name); }).slice(0, 4);
+        print(err('Command "' + name + '" is not defined.') + (near.length ? '\n\n' + y('Did you mean one of these?') + '\n' + near.map(function (n) { return '    ' + link(n); }).join('\n') : '\n\nRun ' + link('help') + ' to see all commands.'));
+        return;
+      }
+      print(fn(args));
+    }
+    function stopTyping() { if (typing) { clearInterval(typing); typing = null; input.value = ''; } }
+    function autoType(text) {
+      if (reduce) { run(text); return; }
+      var i = 0;
+      typing = setInterval(function () {
+        input.value = text.slice(0, ++i);
+        if (i >= text.length) {
+          clearInterval(typing); typing = null;
+          setTimeout(function () { input.value = ''; run(text); }, 250);
+        }
+      }, 45);
+    }
+
+    form.addEventListener('submit', function (e) { e.preventDefault(); stopTyping(); var v = input.value; input.value = ''; run(v); });
+    input.addEventListener('keydown', function (e) {
+      if (typing) stopTyping();
+      if (e.key === 'ArrowUp') { if (hi > 0) { hi--; input.value = hist[hi]; } e.preventDefault(); }
+      else if (e.key === 'ArrowDown') { if (hi < hist.length - 1) { hi++; input.value = hist[hi]; } else { hi = hist.length; input.value = ''; } e.preventDefault(); }
+      else if (e.key === 'Tab') {
+        var raw = input.value, pre = (raw.match(/^(php\s+)?bin\/magento\s+/) || [''])[0], part = raw.slice(pre.length);
+        if (!part) return;
+        e.preventDefault();
+        var hits = NAMES.filter(function (n) { return n.indexOf(part) === 0; });
+        if (hits.length === 1) input.value = pre + hits[0] + ' ';
+        else if (hits.length > 1) print(PROMPT + esc(raw) + '\n' + hits.map(function (n) { return link(n); }).join('  '));
+      }
+    });
+    root.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cmd]');
+      if (b) {
+        stopTyping();
+        run(b.getAttribute('data-cmd'));
+        if (!touch) input.focus({ preventScroll: true });
+        return;
+      }
+      if (e.target.closest('#t-screen') && !e.target.closest('a') && !window.getSelection().toString()) input.focus({ preventScroll: true });
+    });
+
+    print(y('Oleksandr Yavorskyi') + ' CLI ' + m('· career data, Magento habits') + '\nType a command or tap one below. ' + link('help') + ' lists everything.');
+    setTimeout(function () { autoType('bin/magento about'); }, reduce ? 0 : 600);
+    if (!touch) input.focus({ preventScroll: true });
+  }
+
+  /* =================================================================
+     MODULES
+     ================================================================= */
+  function renderModules(root) {
+    root.className = 'vm';
+    var BASE = 'app/code/Yavorskyi/';
+    var F = {};
+    var ICON = { xml: '&lt;/&gt;', php: 'php', md: 'M↓', json: '{ }' };
+    var LANG = { xml: 'XML', php: 'PHP', md: 'Markdown', json: 'JSON' };
+
+    F['README.md'] = [
+      '# ' + D.name,
+      '',
+      'Magento full-stack developer. 6+ years, 8 projects, 1 Adobe certification.',
+      D.summary,
+      '',
+      '## How to read this repository',
+      '',
+      '- Every project I worked on is a module in `app/code/Yavorskyi`.',
+      '- Its `README.md` says what I built there.',
+      '- Its `etc/module.xml` lists the core Magento modules the work touched.',
+      '- `app/etc/config.php` lists all my modules, newest first.',
+      '- `composer.json` holds my stack.',
+      '',
+      '## Certification',
+      '',
+      '[' + D.certName + '](' + D.cert + ')',
+      '',
+      '## Contact',
+      '',
+      '- Email: ' + D.email,
+      '- LinkedIn: [linkedin.com/in/proseno](' + D.linkedin + ')',
+      '',
+      '## Education and languages',
+      '',
+      '- ' + D.edu,
+      '- ' + D.langs
+    ].join('\n');
+
+    var stackObj = {};
+    D.stack.forEach(function (gr) { stackObj[gr[0].toLowerCase().replace(/[^a-z]+/g, '-')] = gr[1]; });
+    F['composer.json'] = JSON.stringify({
+      name: 'yavorskyi/cv',
+      description: 'Magento full-stack developer, 6+ years',
+      homepage: D.linkedin,
+      authors: [{ name: D.name, email: D.email }],
+      extra: { certification: D.certName, stack: stackObj }
+    }, null, 4);
+
+    F['app/etc/config.php'] = ['<?php', '// Every project since 2019, newest first.', 'return [', "    'modules' => ["]
+      .concat(D.projects.map(function (p) { return "        'Yavorskyi_" + p.mod + "' => 1, // " + p.years; }))
+      .concat(['    ],', '];']).join('\n');
+
+    D.projects.forEach(function (p) {
+      var dir = BASE + p.mod + '/';
+      F[dir + 'README.md'] = ['# ' + p.title, '', '`' + p.years + '` · ' + p.role, '']
+        .concat(p.ctx ? [p.ctx, ''] : [])
+        .concat(['## What I built', ''])
+        .concat(points(p).map(function (x) { return '- ' + x; }))
+        .concat(['', '## Stack', '', p.tags.map(function (t) { return '`' + t + '`'; }).join(' ')]).join('\n');
+      F[dir + 'etc/module.xml'] = ['<?xml version="1.0"?>', '<!-- ' + p.years + ' · ' + p.role + ' -->',
+        '<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">',
+        '    <module name="Yavorskyi_' + p.mod + '">', '        <sequence>']
+        .concat(p.deps.map(function (d) { return '            <module name="' + d + '"/>'; }))
+        .concat(['        </sequence>', '    </module>', '</config>']).join('\n');
+      F[dir + 'registration.php'] = ['<?php', 'use Magento\\Framework\\Component\\ComponentRegistrar;', '',
+        'ComponentRegistrar::register(', '    ComponentRegistrar::MODULE,', "    'Yavorskyi_" + p.mod + "',", '    __DIR__', ');'].join('\n');
+    });
+
+    var tree = {};
+    Object.keys(F).forEach(function (path) {
+      var parts = path.split('/'), n = tree;
+      parts.forEach(function (part, i) {
+        if (i === parts.length - 1) n[part] = path;
+        else { n[part] = n[part] || {}; n = n[part]; }
+      });
+    });
+    var expanded = { 'app': 1, 'app/code': 1, 'app/code/Yavorskyi': 1, 'app/etc': 1 };
+    expanded[BASE + D.projects[0].mod] = 1;
+    expanded[BASE + D.projects[0].mod + '/etc'] = 1;
+    var tabs = ['README.md'], active = 'README.md';
+
+    root.innerHTML = '<header class="m-top"><button class="m-btn m-files-btn" type="button" id="m-files" aria-controls="m-side" aria-expanded="false">Files</button>'
+      + '<span class="m-proj">yavorskyi-cv</span><span class="m-crumbs" id="m-crumbs"></span>'
+      + '<button class="m-btn" type="button" id="m-contact">Contact</button></header>'
+      + '<div class="m-body"><nav class="m-side" id="m-side" aria-label="Project files"><div class="m-side-k">Project · ' + esc(D.name) + '</div><div id="m-tree"></div></nav>'
+      + '<div class="m-main"><div class="m-tabs" id="m-tabs"></div><div class="m-path" id="m-path"></div><div class="m-code" id="m-code" tabindex="0"></div></div></div>'
+      + '<footer class="m-status"><span id="m-lang"></span><span id="m-lines"></span><span>UTF-8</span><span>LF</span><span>' + D.projects.length + ' modules enabled</span></footer>';
+
+    var treeEl = document.getElementById('m-tree'), side = document.getElementById('m-side'), filesBtn = document.getElementById('m-files');
+
+    function extOf(p) { return p.split('.').pop(); }
+    function nodes(node, base, depth) {
+      return Object.keys(node).sort(function (a, b) {
+        var da = typeof node[a] === 'object', db = typeof node[b] === 'object';
+        if (da !== db) return da ? -1 : 1;
+        return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
+      }).map(function (k) {
+        var path = base ? base + '/' + k : k;
+        var pad = ' style="padding-left:' + (10 + depth * 14) + 'px"';
+        if (typeof node[k] === 'object') {
+          var open = !!expanded[path];
+          return '<button class="m-node" type="button" data-dir="' + esc(path) + '" aria-expanded="' + open + '"' + pad + '><span class="m-caret">' + (open ? '▾' : '▸') + '</span><span class="m-folder"></span>' + esc(k) + '</button>'
+            + (open ? nodes(node[k], path, depth + 1) : '');
+        }
+        var e = extOf(k);
+        return '<button class="m-node' + (path === active ? ' on' : '') + '" type="button" data-file="' + esc(path) + '"' + pad + '><span class="m-caret"></span><span class="m-ico m-ico--' + e + '">' + ICON[e] + '</span>' + esc(k) + '</button>';
+      }).join('');
+    }
+    function drawTree() { treeEl.innerHTML = nodes(tree, '', 0); }
+
+    var RULES = {
+      xml: [[/<!--.*?-->/y, 'com'], [/<\?xml[^?]*\?>/y, 'kw'], [/<\/?[\w:.-]+/y, 'tag'], [/\/?>/y, 'tag'], [/[\w:.-]+(?==")/y, 'attr'], [/"[^"]*"/y, 'str']],
+      php: [[/\/\/.*/y, 'com'], [/<\?php/y, 'kw'], [/'[^']*'/y, 'str'], [/\$\w+/y, 'var'], [/\b(?:use|return|true|false|null)\b/y, 'kw'], [/__DIR__/y, 'kw'], [/\b\d+\b/y, 'num']],
+      json: [[/"(?:[^"\\]|\\.)*"(?=\s*:)/y, 'attr'], [/"(?:[^"\\]|\\.)*"/y, 'str'], [/\b\d+\b/y, 'num'], [/\b(?:true|false|null)\b/y, 'kw']],
+      md: [[/`[^`]+`/y, 'str'], [/\[([^\]]+)\]\(([^)]+)\)/y, 'link'], [/\*\*[^*]+\*\*/y, 'b']]
+    };
+    function scan(line, rules) {
+      var outS = '', plain = '', i = 0;
+      while (i < line.length) {
+        var hit = null;
+        for (var r = 0; r < rules.length; r++) {
+          var re = rules[r][0];
+          re.lastIndex = i;
+          var mm = re.exec(line);
+          if (mm && mm[0].length) { hit = [mm, rules[r][1]]; break; }
+        }
+        if (hit) {
+          outS += esc(plain); plain = '';
+          var t = hit[0][0];
+          outS += hit[1] === 'link'
+            ? '<a class="hl-a" ' + ext(hit[0][2]) + '>' + esc(t) + '</a>'
+            : '<span class="hl-' + hit[1] + '">' + esc(t) + '</span>';
+          i += t.length;
+        } else { plain += line[i]; i++; }
+      }
+      return outS + esc(plain);
+    }
+    function hl(line, lang) {
+      if (lang === 'md') {
+        if (/^#{1,6} /.test(line)) return '<span class="hl-h">' + esc(line) + '</span>';
+        var mm = line.match(/^(\s*- )/), pre = '';
+        if (mm) { pre = '<span class="hl-li">' + esc(mm[1]) + '</span>'; line = line.slice(mm[1].length); }
+        return pre + scan(line, RULES.md);
+      }
+      return scan(line, RULES[lang] || []);
+    }
+
+    function draw() {
+      var e = extOf(active), lines = F[active].split('\n');
+      document.getElementById('m-tabs').innerHTML = tabs.map(function (t) {
+        return '<button class="m-tab' + (t === active ? ' on' : '') + '" type="button" data-file="' + esc(t) + '"><span class="m-ico m-ico--' + extOf(t) + '">' + ICON[extOf(t)] + '</span>' + esc(t.split('/').pop()) + '</button>';
+      }).join('');
+      document.getElementById('m-path').textContent = active.split('/').join(' › ');
+      document.getElementById('m-crumbs').textContent = active;
+      document.getElementById('m-lang').textContent = LANG[e];
+      document.getElementById('m-lines').textContent = lines.length + ' lines';
+      document.getElementById('m-code').innerHTML = lines.map(function (l, i) {
+        return '<div class="m-l"><span class="m-n">' + (i + 1) + '</span><span class="m-c">' + hl(l, e) + '</span></div>';
+      }).join('');
+      document.getElementById('m-code').scrollTop = 0;
+      drawTree();
+    }
+    function open(path) {
+      if (!F[path]) return;
+      if (tabs.indexOf(path) < 0) { tabs.push(path); if (tabs.length > 6) tabs.splice(tabs[0] === active ? 1 : 0, 1); }
+      active = path;
+      var parts = path.split('/');
+      for (var i = 1; i < parts.length; i++) expanded[parts.slice(0, i).join('/')] = 1;
+      draw();
+      setDrawer(false);
+    }
+    function setDrawer(on) { side.classList.toggle('open', on); filesBtn.setAttribute('aria-expanded', String(on)); }
+
+    treeEl.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var dir = b.getAttribute('data-dir');
+      if (dir) {
+        if (expanded[dir]) delete expanded[dir]; else expanded[dir] = 1;
+        drawTree();
+        var again = treeEl.querySelector('[data-dir="' + dir + '"]');
+        if (again) again.focus();
+      } else open(b.getAttribute('data-file'));
+    });
+    document.getElementById('m-tabs').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-file]');
+      if (b) open(b.getAttribute('data-file'));
+    });
+    filesBtn.addEventListener('click', function () { setDrawer(!side.classList.contains('open')); });
+    document.getElementById('m-contact').addEventListener('click', function () {
+      open('README.md');
+      var rows = root.querySelectorAll('.m-l');
+      for (var i = 0; i < rows.length; i++) {
+        if (rows[i].textContent.indexOf('## Contact') > -1) {
+          rows[i].classList.add('hit');
+          if (rows[i + 2]) rows[i + 2].classList.add('hit');
+          if (rows[i + 3]) rows[i + 3].classList.add('hit');
+          rows[i].scrollIntoView({ block: 'center' });
+          break;
+        }
+      }
+    });
+    draw();
+  }
 })();
 </script>
 </body>
