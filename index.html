@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer. Selected work, career and contact.">
+<title>Oleksandr Yavorskyi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: one long page. Hero pairs a headline with a "storefront to ERP" lane map; work cards in two columns; career as a ruled timeline. Dark first, light follows the system. */
+:root {
+  --bg: #0c0f14;
+  --surface: #131822;
+  --fg: #e8ebf1;
+  --muted: #97a1b3;
+  --line: #232b38;
+  --accent: #7aa8ff;
+  --accent-fg: #0c0f14;
+  --soft: #16203a;
+  --f-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --f-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f5f7; --surface: #ffffff; --fg: #10141b; --muted: #566070;
+    --line: #d9dde4; --accent: #1d55d8; --accent-fg: #ffffff; --soft: #e6ecfa;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f5f7; --surface: #ffffff; --fg: #10141b; --muted: #566070;
+  --line: #d9dde4; --accent: #1d55d8; --accent-fg: #ffffff; --soft: #e6ecfa;
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+* { box-sizing: border-box; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: min(100%, 1120px); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+section { padding-block: clamp(56px, 9vw, 104px); border-top: 1px solid var(--line); }
+section.hero { border-top: 0; padding-block: clamp(40px, 7vw, 88px); }
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.08; }
+h1 { font-weight: 800; font-stretch: 112%; font-size: clamp(2rem, 5.4vw, 3.9rem); letter-spacing: -0.015em; }
+h2 { font-weight: 750; font-stretch: 108%; font-size: clamp(1.6rem, 3.6vw, 2.5rem); letter-spacing: -0.01em; }
+h3 { font-weight: 700; font-stretch: 100%; font-size: 1.15rem; line-height: 1.25; }
+p { margin: 0; }
+.lead { color: var(--muted); font-size: clamp(1.02rem, 1.6vw, 1.2rem); max-width: 56ch; }
+
+/* header */
+header.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.bar-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+.brand { font-family: var(--f-display); font-weight: 750; font-stretch: 108%; text-decoration: none; white-space: nowrap; }
+nav.links { display: none; gap: 26px; font-size: 14.5px; }
+nav.links a { text-decoration: none; color: var(--muted); }
+nav.links a:hover { color: var(--fg); }
+.bar-end { display: flex; align-items: center; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font: 500 14.5px/1 var(--f-body);
+  padding: 12px 18px; border-radius: 4px; text-decoration: none; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; color: var(--fg);
+}
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); font-weight: 600; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.small { padding: 9px 14px; font-size: 13.5px; }
+.theme { width: 38px; height: 38px; padding: 0; }
+@media (min-width: 760px) { nav.links { display: flex; } }
+
+/* hero */
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: clamp(36px, 6vw, 64px); align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; } }
+.hero-copy { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.cert {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 12.5px; color: var(--fg);
+  border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 8px 12px;
+}
+.cert i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
+.map-head {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  font-family: var(--f-mono); font-size: 12px; color: var(--muted);
+  padding: 12px 16px; border-bottom: 1px solid var(--line);
+}
+.lanes { list-style: none; margin: 0; padding: 18px 16px 18px 20px; position: relative; display: flex; flex-direction: column; gap: 18px; }
+.lanes::before { content: ''; position: absolute; left: 24px; top: 26px; bottom: 26px; width: 1px; background: var(--line); }
+.lanes::after {
+  content: ''; position: absolute; left: 21px; top: 22px; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); animation: travel 5s ease-in-out infinite;
+}
+@keyframes travel { 0% { top: 22px; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: calc(100% - 30px); opacity: 0; } }
+.lanes li { position: relative; padding-left: 28px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.lanes li::before {
+  content: ''; position: absolute; left: 0; top: 4px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--muted);
+}
+.lane-k { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li {
+  display: block; padding: 3px 9px; position: static;
+  font-family: var(--f-mono); font-size: 12.5px; line-height: 1.5;
+  border: 1px solid var(--line); border-radius: 4px; color: var(--fg); background: var(--bg);
+}
+.chips li::before { content: none; }
+.lanes .chips li { padding-left: 9px; }
+.chips li.hl { border-color: var(--accent); color: var(--accent); }
+
+/* about */
+.split { display: grid; grid-template-columns: 1fr; gap: 36px; }
+@media (min-width: 900px) { .split { grid-template-columns: 0.8fr 1.2fr; gap: 64px; } }
+.stack-col { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.stat { padding: 18px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat b { font-family: var(--f-display); font-weight: 800; font-stretch: 112%; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+dl.facts { margin: 0; display: grid; grid-template-columns: 110px 1fr; gap: 12px 16px; font-size: 15px; }
+dl.facts dt { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+dl.facts dd { margin: 0; min-width: 0; }
+.prose { display: flex; flex-direction: column; gap: 16px; max-width: 62ch; color: var(--muted); }
+.prose p:first-child { color: var(--fg); font-size: 1.12rem; }
+
+/* work */
+.sec-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: clamp(28px, 5vw, 48px); max-width: 60ch; }
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.card .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); }
+.card .summary { color: var(--muted); }
+.card ul.points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+.card ul.points li { padding-left: 18px; position: relative; }
+.card ul.points li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--accent); }
+.card .chips { margin-top: auto; padding-top: 4px; }
+
+/* career */
+.timeline { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.timeline > li { display: grid; grid-template-columns: 1fr; gap: 6px 32px; padding-block: 24px; border-bottom: 1px solid var(--line); }
+@media (min-width: 720px) { .timeline > li { grid-template-columns: 150px minmax(0, 1fr); } }
+.when { font-family: var(--f-mono); font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.role { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); margin: 4px 0 8px; }
+.timeline p { color: var(--muted); max-width: 70ch; font-size: 15px; }
+
+/* stack */
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.stack-grid > div { padding: 22px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.stack-grid h3 { font-family: var(--f-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* why */
+.why { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 32px 40px; }
+.why > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.why p { color: var(--muted); font-size: 15px; }
+
+/* contact */
+.contact { display: flex; flex-direction: column; gap: 28px; }
+.contact h2 { font-size: clamp(1.9rem, 5vw, 3.4rem); font-stretch: 112%; max-width: 20ch; }
+.mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.mail { font-family: var(--f-mono); font-size: clamp(1rem, 2.6vw, 1.35rem); user-select: all; overflow-wrap: anywhere; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 13.5px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lanes::after { animation: none; display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="#top">Oleksandr Yavorskyi</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#career">Career</a>
+      <a href="#stack">Stack</a>
+    </nav>
+    <div class="bar-end">
+      <button class="btn theme" id="theme" type="button" aria-label="Switch light or dark theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+      </button>
+      <a class="btn primary small" href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Adobe Commerce full-stack developer · 6+ years</p>
+        <h1>Adobe Commerce engineer who wires stores to ERPs, payments and carriers</h1>
+        <p class="lead">I build and maintain Magento 2 backends for high-load stores: custom PHP, B2B features, ERP and logistics integrations, version upgrades and production fixes.</p>
+        <div class="cert"><i></i>Adobe Certified Expert · Adobe Commerce Developer</div>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="#work">See selected work</a>
+        </div>
+      </div>
+
+      <div class="map" aria-label="Where my work sits, from storefront to ERP">
+        <div class="map-head"><span>storefront → ERP</span><span>layers I work in</span></div>
+        <ol class="lanes">
+          <li><span class="lane-k">Edge</span><ul class="chips"><li>Varnish</li><li>Nginx</li></ul></li>
+          <li><span class="lane-k">Application</span><ul class="chips"><li class="hl">Magento 2 / Adobe Commerce</li><li>PHP</li><li>GraphQL</li><li>REST API</li></ul></li>
+          <li><span class="lane-k">Data</span><ul class="chips"><li>MySQL</li><li>Redis</li><li>Elasticsearch</li></ul></li>
+          <li><span class="lane-k">Async</span><ul class="chips"><li>RabbitMQ</li><li>AMQP</li><li>Cron</li><li>Queue</li></ul></li>
+          <li><span class="lane-k">External systems</span><ul class="chips"><li>SAP ERP</li><li>PIM</li><li>Salesforce</li><li>Aramex</li><li>Nova Poshta</li><li>Adyen</li><li>Marketo</li></ul></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Four projects where the backend carried the result</h2>
+        <p class="lead">Client names are kept private, so each project is described by what the business sells.</p>
+      </div>
+      <div class="work-grid">
+        <article class="card">
+          <div class="meta"><span>2026</span><span>Magento 2 Full-Stack Developer</span></div>
+          <h3>Cosmetics marketplace: customer account</h3>
+          <p class="summary">A high-load marketplace for cosmetics and home goods. I own the customer account area and work with the iOS, Android, ERP and other Magento teams.</p>
+          <ul class="points">
+            <li>Moved the customer account from Vue Storefront to Nuxt.js, with the backend support it needed.</li>
+            <li>Built a custom bundle product with several child products and its own stock and price calculation.</li>
+            <li>Added order change requests, so customers can edit a placed order by sending a request to support.</li>
+            <li>Wrote a CLI command that fixes bad customer name data in Magento and the ERPs, tuned to run safely on production.</li>
+          </ul>
+          <ul class="chips"><li>Magento 2</li><li>PHP</li><li>Nuxt.js</li><li>MySQL</li><li>Warden</li><li>PHPUnit</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="meta"><span>2023 – 2024</span><span>Magento 2 Full-Stack Developer</span></div>
+          <h3>B2B construction materials: shop on SAP and PIM</h3>
+          <p class="summary">A global building materials seller moved from manual ordering to an Adobe Commerce shop that automates the process.</p>
+          <ul class="points">
+            <li>Planned and built the SAP ERP integration, including the mapping between SAP and Adobe Commerce entities.</li>
+            <li>Customised the B2B features: quick order, company accounts, requisition lists and negotiable quotes.</li>
+            <li>Rebuilt the requisition list page on a listing UI component with ajax reload.</li>
+            <li>Extended orders, quotes and products with custom attributes. Deployed and maintained on Adobe Commerce Cloud.</li>
+          </ul>
+          <ul class="chips"><li>Adobe Commerce Cloud</li><li>SAP</li><li>PIM</li><li>KnockoutJS</li><li>Docker</li><li>Warden</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="meta"><span>2024 – 2025</span><span>Magento 2 Full-Stack Developer</span></div>
+          <h3>Remote-access software vendor: upgrades and cleanup</h3>
+          <p class="summary">A global provider of remote connectivity software with a long-lived Adobe Commerce codebase.</p>
+          <ul class="points">
+            <li>Upgraded Adobe Commerce, applied the security patch and rotated the encryption key.</li>
+            <li>Updated the Adyen payment module and kept all custom logic in place.</li>
+            <li>Refactored the Marketo integration that sends leads and opportunities.</li>
+            <li>Brought Firebear_ImportExport to the latest version after 5 years of customisation.</li>
+            <li>Removed unneeded Elasticsearch modules, added CSP policies and fixed Sentry issues.</li>
+          </ul>
+          <ul class="chips"><li>Adobe Commerce</li><li>Adyen</li><li>Marketo</li><li>Sentry</li><li>DDEV</li><li>React</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="meta"><span>2021 – 2023</span><span>Software Engineer, Back-End Developer</span></div>
+          <h3>GCC cosmetics retailer: headless Magento and Salesforce</h3>
+          <p class="summary">A distributor of cosmetic brands in the Gulf region and Egypt. Magento 2 ran headless behind a Salesforce front end.</p>
+          <ul class="points">
+            <li>Synced orders, products, prices and inventory with Salesforce Commerce Cloud through XML files and cron jobs.</li>
+            <li>Maintained and refactored the Aramex integration for order status, history and inventory.</li>
+            <li>Helped build the Arabic PDF invoice module, with the QR code needed for KSA e-invoicing.</li>
+            <li>Wrote a module that archives large tables on a schedule to shrink the MySQL database.</li>
+            <li>Helped roll out Varnish on every website.</li>
+          </ul>
+          <ul class="chips"><li>Magento 2</li><li>Salesforce</li><li>Aramex</li><li>Varnish</li><li>Cron</li><li>MySQL</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap split">
+      <div class="stack-col">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>Magento developer with a backend focus</h2>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>6+</b><span>years on Magento</span></div>
+          <div class="stat"><b>8</b><span>client projects</span></div>
+          <div class="stat"><b>1</b><span>Adobe Expert certification</span></div>
+        </div>
+      </div>
+      <div class="stack-col">
+        <div class="prose">
+          <p>My work is complex custom PHP on Magento 2 and Adobe Commerce: new modules, integrations with outside systems, and keeping large stores healthy in production.</p>
+          <p>I deliver on time, talk directly with other teams (mobile, ERP, other Magento teams) and like sharing what I know with the people I work with.</p>
+        </div>
+        <dl class="facts">
+          <dt>Certified</dt><dd>Adobe Certified Expert, Adobe Commerce Developer</dd>
+          <dt>Education</dt><dd>Master's degree in Cybersecurity, Khmelnytskyi National University</dd>
+          <dt>Languages</dt><dd>Ukrainian (native), English (upper intermediate)</dd>
+          <dt>Off hours</dt><dd>Basketball, reading, watching videos</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Career</p>
+        <h2>Eight Magento projects since 2019</h2>
+      </div>
+      <ol class="timeline">
+        <li>
+          <div class="when">2026 – now</div>
+          <div><h3>Cosmetics marketplace</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <p>Customer account area, custom bundle products, order change requests, production bug fixes, PHPUnit and API tests.</p></div>
+        </li>
+        <li>
+          <div class="when">2025 – 2026</div>
+          <div><h3>EU tobacco and e-cigarette retailer</h3><div class="role">Magento 2 Backend Developer</div>
+          <p>On-duty engineer for production-critical bugs. Unblocked checkout, upgraded Magento across several projects and added REST API support for managing attribute options externally.</p></div>
+        </li>
+        <li>
+          <div class="when">2025</div>
+          <div><h3>Multi-vendor marketplace</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <p>Set up the shop from scratch, built the Nova Poshta delivery integration and customised account, product page, listing and review layouts to the design.</p></div>
+        </li>
+        <li>
+          <div class="when">2024 – 2025</div>
+          <div><h3>Remote-access software vendor</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <p>Adobe Commerce upgrade with encryption key rotation, Adyen and Marketo work, legacy cleanup.</p></div>
+        </li>
+        <li>
+          <div class="when">2023 – 2024</div>
+          <div><h3>B2B construction materials seller</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <p>New Adobe Commerce shop integrated with SAP ERP and PIM, with customised B2B features.</p></div>
+        </li>
+        <li>
+          <div class="when">2021 – 2023</div>
+          <div><h3>GCC cosmetics retailer</h3><div class="role">Software Engineer, Magento 2 Back-End Developer</div>
+          <p>Salesforce, Aramex, SMS verification, SFTP reporting, Arabic invoicing and database archiving.</p></div>
+        </li>
+        <li>
+          <div class="when">2020 – 2021</div>
+          <div><h3>B2B clothing retailer, EU</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <p>Custom modules, product collection and pagination fixes, layered navigation, and a delivery integration that lets suppliers create and delete shipments themselves, with invoices and labels saved and cleaned up by cron.</p></div>
+        </li>
+        <li>
+          <div class="when">2019 – 2020</div>
+          <div><h3>Motorboat parts shop</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <p>Magento 2.2 to 2.3 update, page speed optimisation, third-party extension integration and design changes.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Stack</p>
+        <h2>Tools I use day to day</h2>
+      </div>
+      <div class="stack-grid">
+        <div><h3>Platform</h3><ul class="chips"><li class="hl">Magento 2</li><li>Adobe Commerce</li><li>Adobe Commerce Cloud</li><li>Magento Open Source</li></ul></div>
+        <div><h3>Backend</h3><ul class="chips"><li>PHP</li><li>SOLID</li><li>CQRS</li><li>REST API</li><li>GraphQL</li><li>Composer</li></ul></div>
+        <div><h3>Data and speed</h3><ul class="chips"><li>MySQL</li><li>Redis</li><li>Elasticsearch</li><li>Varnish</li></ul></div>
+        <div><h3>Async</h3><ul class="chips"><li>RabbitMQ</li><li>AMQP</li><li>Cron</li><li>Queue</li></ul></div>
+        <div><h3>Environment</h3><ul class="chips"><li>Nginx</li><li>Docker</li><li>Docker Compose</li><li>Warden</li><li>DDEV</li><li>Linux</li><li>Git</li></ul></div>
+        <div><h3>Frontend</h3><ul class="chips"><li>JavaScript</li><li>HTML</li><li>KnockoutJS</li><li>jQuery</li><li>Grunt</li><li>Nuxt.js</li><li>Vue Storefront</li><li>React</li></ul></div>
+        <div><h3>Quality and workflow</h3><ul class="chips"><li>PHPUnit</li><li>Sentry</li><li>Azure DevOps</li><li>GitLab</li><li>Jira</li><li>YouTrack</li><li>ActiveCollab</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Why work with me</p>
+        <h2>What you get on a Magento project</h2>
+      </div>
+      <div class="why">
+        <div><h3>Integrations that keep running</h3><p>ERP, PIM, CRM, payment and carrier integrations, built on APIs or on XML files and cron, then maintained and refactored as the business changes.</p></div>
+        <div><h3>Upgrades without surprises</h3><p>Version upgrades, security patches and encryption key rotation, with custom and third-party logic kept intact.</p></div>
+        <div><h3>Production ownership</h3><p>I take on critical production bugs and cover changes with PHPUnit and API tests, so fixes hold.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Need a Magento backend developer?</h2>
+      <p class="lead">Tell me about your store and what needs to be built, upgraded or fixed.</p>
+      <div class="mail-row">
+        <span class="mail" id="mail">savorskij201@gmail.com</span>
+        <button class="btn" id="copy" type="button">Copy address</button>
+        <a class="btn primary" href="mailto:savorskij201@gmail.com">Write an email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Oleksandr Yavorskyi</span>
+    <span>Adobe Commerce full-stack developer</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('theme');
+  themeBtn.addEventListener('click', function () {
+    var attr = root.getAttribute('data-theme');
+    var isDark = attr ? attr === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches;
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  });
+
+  var copyBtn = document.getElementById('copy');
+  var mail = document.getElementById('mail');
+  copyBtn.addEventListener('click', function () {
+    var done = function () {
+      copyBtn.textContent = 'Copied';
+      setTimeout(function () { copyBtn.textContent = 'Copy address'; }, 1800);
+    };
+    var fallback = function () {
+      var r = document.createRange();
+      r.selectNodeContents(mail);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    };
+    try {
+      navigator.clipboard.writeText(mail.textContent.trim()).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
