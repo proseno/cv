@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, career, stack and contact.">
+<meta name="description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, full career, stack and contact.">
 <meta property="og:title" content="CV Magento Developer Oleksandr Yavorskyi">
-<meta property="og:description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, career, stack and contact.">
+<meta property="og:description" content="CV of Oleksandr Yavorskyi, Adobe Commerce (Magento 2) full-stack developer with 6+ years of experience. Previous experience, full career, stack and contact.">
 <meta property="og:type" content="website">
 <title>CV Magento Developer Oleksandr Yavorskyi</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0f14'/%3E%3Crect x='3' y='3' width='58' height='58' rx='10' fill='none' stroke='%237aa8ff' stroke-width='2'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%237aa8ff'%3EOY%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d1a2f'/%3E%3Crect x='3' y='3' width='58' height='58' rx='10' fill='none' stroke='%237db2ff' stroke-width='2'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%237db2ff'%3EOY%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -16,16 +16,22 @@
 body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
-/* Layout: one long page. Hero pairs a headline with a "storefront to ERP" lane map; work cards in two columns; career as a ruled timeline. Dark first, light follows the system. */
+/* Layout: one long page over a faint animated network. Hero pairs a headline with a "storefront to ERP" lane map; 2 project cards; ruled career timeline; stack as 8 equal cards. Dark navy first, light follows the system.
+   Borders: every container uses 1px solid var(--line) with --r radius, every small control uses --r-sm. */
 :root {
-  --bg: #0c0f14;
-  --surface: #131822;
-  --fg: #e8ebf1;
-  --muted: #97a1b3;
-  --line: #232b38;
-  --accent: #7aa8ff;
-  --accent-fg: #0c0f14;
-  --soft: #16203a;
+  --bg: #0d1a2f;
+  --surface: #14233d;
+  --fg: #eaf0fb;
+  --muted: #a8b6cf;
+  --line: #2b3d5e;
+  --line-hi: #4a6190;
+  --accent: #7db2ff;
+  --accent-2: #4fd6c3;
+  --accent-fg: #0a1628;
+  --soft: #1b2f52;
+  --net-a: 0.22;
+  --r: 10px;
+  --r-sm: 6px;
   --f-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --f-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -33,14 +39,16 @@ img { max-width: 100%; }
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #f4f5f7; --surface: #ffffff; --fg: #10141b; --muted: #566070;
-    --line: #d9dde4; --accent: #1d55d8; --accent-fg: #ffffff; --soft: #e6ecfa;
+    --bg: #f2f6fc; --surface: #ffffff; --fg: #0e1a30; --muted: #4e5f7c;
+    --line: #d0dae9; --line-hi: #9fb2d0; --accent: #1c58d6; --accent-2: #0c8f82;
+    --accent-fg: #ffffff; --soft: #e4edfb; --net-a: 0.2;
     color-scheme: light;
   }
 }
 :root[data-theme="light"] {
-  --bg: #f4f5f7; --surface: #ffffff; --fg: #10141b; --muted: #566070;
-  --line: #d9dde4; --accent: #1d55d8; --accent-fg: #ffffff; --soft: #e6ecfa;
+  --bg: #f2f6fc; --surface: #ffffff; --fg: #0e1a30; --muted: #4e5f7c;
+  --line: #d0dae9; --line-hi: #9fb2d0; --accent: #1c58d6; --accent-2: #0c8f82;
+  --accent-fg: #ffffff; --soft: #e4edfb; --net-a: 0.2;
   color-scheme: light;
 }
 
@@ -56,9 +64,14 @@ body {
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
+#bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+main, footer { position: relative; z-index: 1; }
+
+.ic { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
 .wrap { width: min(100%, 1120px); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
-section { padding-block: clamp(56px, 9vw, 104px); border-top: 1px solid var(--line); }
-section.hero { border-top: 0; padding-block: clamp(40px, 7vw, 88px); }
+section { padding-block: clamp(44px, 7vw, 96px); border-top: 1px solid var(--line); }
+section.hero { border-top: 0; padding-block: clamp(24px, 4vw, 52px); }
 
 .eyebrow {
   font-family: var(--f-mono);
@@ -66,19 +79,20 @@ section.hero { border-top: 0; padding-block: clamp(40px, 7vw, 88px); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-  margin: 0 0 18px;
+  margin: 0;
 }
-h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.08; }
-h1 { font-weight: 800; font-stretch: 112%; font-size: clamp(2rem, 5.4vw, 3.9rem); letter-spacing: -0.015em; }
-h2 { font-weight: 750; font-stretch: 108%; font-size: clamp(1.6rem, 3.6vw, 2.5rem); letter-spacing: -0.01em; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+h1 { font-weight: 800; font-stretch: 112%; font-size: clamp(1.9rem, 4.6vw, 3.3rem); letter-spacing: -0.015em; }
+h2 { font-weight: 750; font-stretch: 108%; font-size: clamp(1.55rem, 3.4vw, 2.4rem); letter-spacing: -0.01em; }
 h3 { font-weight: 700; font-stretch: 100%; font-size: 1.15rem; line-height: 1.25; }
 p { margin: 0; }
-.lead { color: var(--muted); font-size: clamp(1.02rem, 1.6vw, 1.2rem); max-width: 56ch; }
+.lead { color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); max-width: 56ch; }
+.hl-text { color: var(--accent); }
 
 /* header */
 header.bar {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -93,10 +107,11 @@ nav.links a:hover { color: var(--fg); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   font: 500 14.5px/1 var(--f-body);
-  padding: 12px 18px; border-radius: 4px; text-decoration: none; cursor: pointer;
+  padding: 12px 18px; border-radius: var(--r-sm); text-decoration: none; cursor: pointer;
   border: 1px solid var(--line); background: transparent; color: var(--fg);
 }
-.btn:hover { border-color: var(--muted); }
+.btn .ic { width: 16px; height: 16px; }
+.btn:hover { border-color: var(--line-hi); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); font-weight: 600; }
 .btn.primary:hover { filter: brightness(1.08); }
 .btn.small { padding: 9px 14px; font-size: 13.5px; }
@@ -104,69 +119,70 @@ nav.links a:hover { color: var(--fg); }
 @media (min-width: 760px) { nav.links { display: flex; } }
 
 /* hero */
-.hero-grid { display: grid; grid-template-columns: 1fr; gap: clamp(36px, 6vw, 64px); align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; } }
-.hero-copy { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; min-width: 0; }
 .cert {
-  display: inline-flex; align-self: flex-start; align-items: center; gap: 10px;
-  font-family: var(--f-mono); font-size: 12.5px; color: var(--fg);
-  border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 8px 12px;
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 10px;
+  font-family: var(--f-mono); font-size: 12.5px; color: var(--fg); text-decoration: none;
+  border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-sm); padding: 8px 12px;
 }
-.cert i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
-a.cert { text-decoration: none; flex-wrap: wrap; }
-a.cert:hover { border-color: var(--accent); }
+.cert-t { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+.cert .ic { width: 18px; height: 18px; color: var(--accent); }
+.cert:hover { border-color: var(--line-hi); }
 .cert-go { color: var(--accent); padding-left: 10px; border-left: 1px solid var(--line); }
 .ulink { color: var(--accent); text-underline-offset: 3px; white-space: nowrap; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
-.map { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); min-width: 0; }
 .map-head {
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   font-family: var(--f-mono); font-size: 12px; color: var(--muted);
   padding: 12px 16px; border-bottom: 1px solid var(--line);
 }
-.lanes { list-style: none; margin: 0; padding: 18px 16px 18px 20px; position: relative; display: flex; flex-direction: column; gap: 18px; }
+.lanes { list-style: none; margin: 0; padding: 18px 16px 18px 20px; position: relative; display: flex; flex-direction: column; gap: 16px; }
 .lanes::before { content: ''; position: absolute; left: 24px; top: 26px; bottom: 26px; width: 1px; background: var(--line); }
 .lanes::after {
   content: ''; position: absolute; left: 21px; top: 22px; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent); animation: travel 5s ease-in-out infinite;
+  background: var(--accent-2); animation: travel 5s ease-in-out infinite;
 }
 @keyframes travel { 0% { top: 22px; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: calc(100% - 30px); opacity: 0; } }
-.lanes li { position: relative; padding-left: 28px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.lanes li::before {
+.lanes > li { position: relative; padding-left: 28px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.lanes > li::before {
   content: ''; position: absolute; left: 0; top: 4px; width: 9px; height: 9px; border-radius: 50%;
-  background: var(--surface); border: 1px solid var(--muted);
+  background: var(--surface); border: 1px solid var(--line-hi);
 }
 .lane-k { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .chips li {
-  display: block; padding: 3px 9px; position: static;
+  padding: 3px 9px;
   font-family: var(--f-mono); font-size: 12.5px; line-height: 1.5;
-  border: 1px solid var(--line); border-radius: 4px; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: var(--r-sm); color: var(--fg); background: var(--bg);
 }
-.chips li::before { content: none; }
-.lanes .chips li { padding-left: 9px; }
 .chips li.hl { border-color: var(--accent); color: var(--accent); }
 
 /* about */
-.split { display: grid; grid-template-columns: 1fr; gap: 36px; }
+.split { display: grid; grid-template-columns: 1fr; gap: 32px; }
 @media (min-width: 900px) { .split { grid-template-columns: 0.8fr 1.2fr; gap: 64px; } }
-.stack-col { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.stack-col { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.about-head { display: flex; flex-direction: column; gap: 14px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
 .stat { padding: 18px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .stat + .stat { border-left: 1px solid var(--line); }
-.stat b { font-family: var(--f-display); font-weight: 800; font-stretch: 112%; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat b { font-family: var(--f-display); font-weight: 800; font-stretch: 112%; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1; font-variant-numeric: tabular-nums; }
 .stat span { font-size: 13px; color: var(--muted); line-height: 1.35; }
 dl.facts { margin: 0; display: grid; grid-template-columns: 110px 1fr; gap: 12px 16px; font-size: 15px; }
 dl.facts dt { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
 dl.facts dd { margin: 0; min-width: 0; }
-.prose { display: flex; flex-direction: column; gap: 16px; max-width: 62ch; color: var(--muted); }
-.prose p:first-child { color: var(--fg); font-size: 1.12rem; }
+.prose { display: flex; flex-direction: column; gap: 14px; max-width: 62ch; color: var(--muted); }
+.prose p:first-child { color: var(--fg); font-size: 1.1rem; }
 
-/* work */
-.sec-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: clamp(28px, 5vw, 48px); max-width: 60ch; }
-.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+/* sections with a heading block */
+.sec-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: clamp(24px, 4vw, 40px); max-width: 60ch; }
+
+/* experience */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: clamp(18px, 3vw, 28px); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .card .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); }
 .card .summary { color: var(--muted); }
 .card ul.points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
@@ -174,39 +190,85 @@ dl.facts dd { margin: 0; min-width: 0; }
 .card ul.points li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--accent); }
 .card .chips { margin-top: auto; padding-top: 4px; }
 
-/* career */
+/* full career */
 .timeline { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.timeline > li { display: grid; grid-template-columns: 1fr; gap: 6px 32px; padding-block: 24px; border-bottom: 1px solid var(--line); }
+.timeline > li { display: grid; grid-template-columns: 1fr; gap: 6px 32px; padding-block: 22px; border-bottom: 1px solid var(--line); }
 @media (min-width: 720px) { .timeline > li { grid-template-columns: 150px minmax(0, 1fr); } }
 .when { font-family: var(--f-mono); font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 3px; }
 .role { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); margin: 4px 0 8px; }
 .timeline p { color: var(--muted); max-width: 70ch; font-size: 15px; }
 
-/* stack */
-.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.stack-grid > div { padding: 22px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.stack-grid h3 { font-family: var(--f-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+/* skills */
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px; }
+.stack-grid > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.stack-grid h3 { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.stack-grid h3 .ic { width: 18px; height: 18px; color: var(--accent); }
 
-/* why */
-.why { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 32px 40px; }
+/* impact */
+.why { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 28px 40px; }
 .why > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .why p { color: var(--muted); font-size: 15px; }
+.tile { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--r-sm); background: var(--soft); border: 1px solid var(--line); color: var(--accent); margin-bottom: 4px; }
 
 /* contact */
-.contact { display: flex; flex-direction: column; gap: 28px; }
-.contact h2 { font-size: clamp(1.9rem, 5vw, 3.4rem); font-stretch: 112%; max-width: 20ch; }
+.contact { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.contact h2 { font-size: clamp(1.8rem, 4.6vw, 3.2rem); font-stretch: 112%; max-width: 20ch; }
 .mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
-.mail { font-family: var(--f-mono); font-size: clamp(1rem, 2.6vw, 1.35rem); user-select: all; overflow-wrap: anywhere; }
-footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 13.5px; color: var(--muted); }
+.mail { font-family: var(--f-mono); font-size: clamp(1rem, 2.6vw, 1.3rem); user-select: all; overflow-wrap: anywhere; }
+.mail-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+footer { border-top: 1px solid var(--line); padding-block: 24px; font-size: 13.5px; color: var(--muted); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+footer a { text-underline-offset: 3px; }
 
+@media (prefers-reduced-motion: no-preference) {
+  .card, .stack-grid > div, .cert, .btn { transition: border-color 0.2s ease, transform 0.2s ease, filter 0.2s ease; }
+  .card:hover, .stack-grid > div:hover { border-color: var(--line-hi); transform: translateY(-2px); }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .lanes::after { animation: none; display: none; }
 }
+
+/* phones */
+@media (max-width: 559px) {
+  .hero-copy { gap: 16px; }
+  .lanes { padding: 16px 14px 16px 16px; gap: 14px; }
+  .lanes::before { left: 20px; }
+  .lanes::after { left: 17px; }
+  .stat { padding: 14px 12px; }
+  dl.facts { grid-template-columns: 1fr; gap: 2px; }
+  dl.facts dt { padding-top: 10px; }
+  dl.facts dt:first-child { padding-top: 0; }
+  .timeline > li { padding-block: 18px; }
+  .stack-grid > div { padding: 16px; }
+  .why { gap: 24px; }
+  .actions .btn, .mail-btns .btn { flex: 1 1 auto; }
+}
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></symbol>
+    <symbol id="i-upgrade" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16V8M8.5 11.5L12 8l3.5 3.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5M3 17l9 5 9-5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+    <symbol id="i-term" viewBox="0 0 24 24"><path d="M4 17l6-6-6-6M12 19h8"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4L12 14l-3-3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.9L7 22l5-3 5 3-1.2-8.1"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="bg" aria-hidden="true"></canvas>
 
 <header class="bar">
   <div class="wrap bar-in">
@@ -214,7 +276,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <nav class="links" aria-label="Sections">
       <a href="#work">Experience</a>
       <a href="#about">About</a>
-      <a href="#career">Career</a>
+      <a href="#career">Full career</a>
       <a href="#stack">Stack</a>
     </nav>
     <div class="bar-end">
@@ -230,13 +292,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">CV · Magento developer · 6+ years of experience</p>
-        <h1>Adobe Commerce engineer who wires stores to ERPs, payments and carriers</h1>
-        <p class="lead">I build and maintain Magento 2 backends for high-load stores: custom PHP, B2B features, ERP and logistics integrations, version upgrades and production fixes.</p>
-        <a class="cert" href="https://certification.adobe.com/credential/verify/3c91d8af-2d74-4f08-b385-b4b7ff478ce3" target="_blank" rel="noopener noreferrer"><i></i>Adobe Certified Expert · Adobe Commerce Developer<span class="cert-go">Verify ↗</span></a>
+        <p class="eyebrow">CV · Magento full-stack developer</p>
+        <h1>I wire stores to <span class="hl-text">ERPs, payments and carriers</span></h1>
+        <p class="lead">I build and maintain high-load Magento 2 stores: custom PHP, B2B features, ERP and logistics integrations, version upgrades and production fixes.</p>
+        <a class="cert" href="https://certification.adobe.com/credential/verify/3c91d8af-2d74-4f08-b385-b4b7ff478ce3" target="_blank" rel="noopener noreferrer"><span class="cert-t"><svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>Adobe Certified Expert · Adobe Commerce Developer</span><span class="cert-go">Verify ↗</span></a>
         <div class="actions">
-          <a class="btn primary" href="#contact">Get in touch</a>
-          <a class="btn" href="#work">See previous experience</a>
+          <a class="btn primary" href="#contact">Contact</a>
+          <a class="btn" href="#work">Experience</a>
         </div>
       </div>
 
@@ -257,7 +319,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Previous experience</p>
-        <h2>Four recent projects in detail</h2>
+        <h2>2 recent projects in detail</h2>
         <p class="lead">Client names are kept private, so each project is described by what the business sells.</p>
       </div>
       <div class="work-grid">
@@ -287,33 +349,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </ul>
           <ul class="chips"><li>Adobe Commerce</li><li>Adyen</li><li>Marketo</li><li>Sentry</li><li>DDEV</li><li>React</li></ul>
         </article>
-
-        <article class="card">
-          <div class="meta"><span>2023 – 2024</span><span>Magento 2 Full-Stack Developer</span></div>
-          <h3>B2B construction materials: shop on SAP and PIM</h3>
-          <p class="summary">A global building materials seller moved from manual ordering to an Adobe Commerce shop that automates the process.</p>
-          <ul class="points">
-            <li>Planned and built the SAP ERP integration, including the mapping between SAP and Adobe Commerce entities.</li>
-            <li>Customised the B2B features: quick order, company accounts, requisition lists and negotiable quotes.</li>
-            <li>Rebuilt the requisition list page on a listing UI component with ajax reload.</li>
-            <li>Extended orders, quotes and products with custom attributes. Deployed and maintained on Adobe Commerce Cloud.</li>
-          </ul>
-          <ul class="chips"><li>Adobe Commerce Cloud</li><li>SAP</li><li>PIM</li><li>KnockoutJS</li><li>Docker</li><li>Warden</li></ul>
-        </article>
-
-        <article class="card">
-          <div class="meta"><span>2021 – 2023</span><span>Software Engineer, Back-End Developer</span></div>
-          <h3>GCC cosmetics retailer: headless Magento and Salesforce</h3>
-          <p class="summary">A distributor of cosmetic brands in the Gulf region and Egypt. Magento 2 ran headless behind a Salesforce front end.</p>
-          <ul class="points">
-            <li>Synced orders, products, prices and inventory with Salesforce Commerce Cloud through XML files and cron jobs.</li>
-            <li>Maintained and refactored the Aramex integration for order status, history and inventory.</li>
-            <li>Helped build the Arabic PDF invoice module, with the QR code needed for KSA e-invoicing.</li>
-            <li>Wrote a module that archives large tables on a schedule to shrink the MySQL database.</li>
-            <li>Helped roll out Varnish on every website.</li>
-          </ul>
-          <ul class="chips"><li>Magento 2</li><li>Salesforce</li><li>Aramex</li><li>Varnish</li><li>Cron</li><li>MySQL</li></ul>
-        </article>
       </div>
     </div>
   </section>
@@ -321,7 +356,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="about">
     <div class="wrap split">
       <div class="stack-col">
-        <div>
+        <div class="about-head">
           <p class="eyebrow">About</p>
           <h2>Magento developer with a backend focus</h2>
         </div>
@@ -337,9 +372,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <p>I deliver on time, talk directly with other teams (mobile, ERP, other Magento teams) and like sharing what I know with the people I work with.</p>
         </div>
         <dl class="facts">
+          <dt>Languages</dt><dd>English (upper intermediate), Ukrainian (native)</dd>
           <dt>Certified</dt><dd>Adobe Certified Expert, Adobe Commerce Developer · <a class="ulink" href="https://certification.adobe.com/credential/verify/3c91d8af-2d74-4f08-b385-b4b7ff478ce3" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></dd>
           <dt>Education</dt><dd>Master's degree in Cybersecurity, Khmelnytskyi National University</dd>
-          <dt>Languages</dt><dd>Ukrainian (native), English (upper intermediate)</dd>
           <dt>Off hours</dt><dd>Basketball, reading, watching videos</dd>
         </dl>
       </div>
@@ -349,8 +384,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="career">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Career</p>
-        <h2>Eight Magento projects since 2019</h2>
+        <p class="eyebrow">Full career</p>
+        <h2>8 Magento projects since 2019</h2>
       </div>
       <ol class="timeline">
         <li>
@@ -380,17 +415,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </li>
         <li>
           <div class="when">2021 – 2023</div>
-          <div><h3>GCC cosmetics retailer</h3><div class="role">Software Engineer, Magento 2 Back-End Developer</div>
+          <div><h3>GCC cosmetics retailer</h3><div class="role">Software Engineer, Magento 2 Backend Developer</div>
           <p>Salesforce, Aramex, SMS verification, SFTP reporting, Arabic invoicing and database archiving.</p></div>
         </li>
         <li>
           <div class="when">2020 – 2021</div>
-          <div><h3>B2B clothing retailer, EU</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <div><h3>B2B clothing retailer, EU</h3><div class="role">Magento 2 Backend Developer</div>
           <p>Custom modules, product collection and pagination fixes, layered navigation, and a delivery integration that lets suppliers create and delete shipments themselves, with invoices and labels saved and cleaned up by cron.</p></div>
         </li>
         <li>
           <div class="when">2019 – 2020</div>
-          <div><h3>Motorboat parts shop</h3><div class="role">Magento 2 Full-Stack Developer</div>
+          <div><h3>Motorboat parts shop</h3><div class="role">Magento 2 Backend Developer</div>
           <p>Magento 2.2 to 2.3 update, page speed optimisation, third-party extension integration and design changes.</p></div>
         </li>
       </ol>
@@ -401,17 +436,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Stack</p>
-        <h2>Tools I use day to day</h2>
+        <h2>I'm experienced in</h2>
       </div>
       <div class="stack-grid">
-        <div><h3>Platform</h3><ul class="chips"><li class="hl">Magento 2</li><li>Adobe Commerce</li><li>Adobe Commerce Cloud</li><li>Magento Open Source</li></ul></div>
-        <div><h3>Backend</h3><ul class="chips"><li>PHP</li><li>SOLID</li><li>CQRS</li><li>REST API</li><li>GraphQL</li><li>Composer</li></ul></div>
-        <div><h3>Data and speed</h3><ul class="chips"><li>MySQL</li><li>Redis</li><li>Elasticsearch</li><li>Varnish</li></ul></div>
-        <div><h3>Async</h3><ul class="chips"><li>RabbitMQ</li><li>AMQP</li><li>Cron</li><li>Queue</li></ul></div>
-        <div><h3>Environment</h3><ul class="chips"><li>Nginx</li><li>Docker</li><li>Docker Compose</li><li>Warden</li><li>DDEV</li><li>Linux</li><li>Git</li></ul></div>
-        <div><h3>Frontend</h3><ul class="chips"><li>JavaScript</li><li>HTML</li><li>KnockoutJS</li><li>jQuery</li><li>Grunt</li><li>Nuxt.js</li><li>Vue Storefront</li><li>React</li></ul></div>
-        <div><h3>Quality and workflow</h3><ul class="chips"><li>PHPUnit</li><li>Sentry</li><li>Azure DevOps</li><li>GitLab</li><li>Jira</li><li>YouTrack</li><li>ActiveCollab</li></ul></div>
-        <div><h3>AI-assisted development</h3><ul class="chips"><li class="hl">Claude Code</li><li class="hl">Codex CLI</li></ul><span class="lane-k">Skills</span><ul class="chips"><li>ponytail</li><li>brainstorm</li><li>superpowers</li><li>caveman</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg>Platform</h3><ul class="chips"><li class="hl">Magento 2</li><li>Adobe Commerce</li><li>Adobe Commerce Cloud</li><li>Magento Open Source</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-code"/></svg>Backend</h3><ul class="chips"><li>PHP</li><li>SOLID</li><li>CQRS</li><li>REST API</li><li>GraphQL</li><li>Composer</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg>Data and speed</h3><ul class="chips"><li>MySQL</li><li>Redis</li><li>Elasticsearch</li><li>Varnish</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg>Async</h3><ul class="chips"><li>RabbitMQ</li><li>AMQP</li><li>Cron</li><li>Queue</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-term"/></svg>Environment</h3><ul class="chips"><li>Nginx</li><li>Docker</li><li>Docker Compose</li><li>Warden</li><li>DDEV</li><li>Linux</li><li>Git</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-monitor"/></svg>Frontend</h3><ul class="chips"><li>JavaScript</li><li>HTML</li><li>KnockoutJS</li><li>jQuery</li><li>Grunt</li><li>Nuxt.js</li><li>Vue Storefront</li><li>React</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Quality and workflow</h3><ul class="chips"><li>PHPUnit</li><li>Sentry</li><li>Azure DevOps</li><li>GitLab</li><li>Jira</li><li>YouTrack</li><li>ActiveCollab</li></ul></div>
+        <div><h3><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>AI-assisted development</h3><ul class="chips"><li class="hl">Claude Code</li><li class="hl">Codex CLI</li></ul><span class="lane-k">Skills</span><ul class="chips"><li>ponytail</li><li>brainstorm</li><li>superpowers</li><li>caveman</li></ul></div>
       </div>
     </div>
   </section>
@@ -419,13 +454,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Why work with me</p>
-        <h2>What you get on a Magento project</h2>
+        <p class="eyebrow">Impact</p>
+        <h2>My impact on a project</h2>
       </div>
       <div class="why">
-        <div><h3>Integrations that keep running</h3><p>ERP, PIM, CRM, payment and carrier integrations, built on APIs or on XML files and cron, then maintained and refactored as the business changes.</p></div>
-        <div><h3>Upgrades without surprises</h3><p>Version upgrades, security patches and encryption key rotation, with custom and third-party logic kept intact.</p></div>
-        <div><h3>Production ownership</h3><p>I take on critical production bugs and cover changes with PHPUnit and API tests, so fixes hold.</p></div>
+        <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-plug"/></svg></span><h3>Integrations that keep running</h3><p>ERP, PIM, CRM, payment and carrier integrations, built on APIs or on XML files and cron, then maintained and refactored as the business changes.</p></div>
+        <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-upgrade"/></svg></span><h3>Upgrades without surprises</h3><p>Version upgrades, security patches and encryption key rotation, with custom and third-party logic kept intact.</p></div>
+        <div><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Production ownership</h3><p>I take on critical production bugs and cover changes with PHPUnit and API tests, so fixes hold.</p></div>
       </div>
     </div>
   </section>
@@ -433,12 +468,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="contact">
     <div class="wrap contact">
       <p class="eyebrow">Contact</p>
-      <h2>Need a Magento backend developer?</h2>
+      <h2>Need a Magento full&#8209;stack developer?</h2>
       <p class="lead">Tell me about your store and what needs to be built, upgraded or fixed.</p>
       <div class="mail-row">
         <span class="mail" id="mail">savorskij201@gmail.com</span>
-        <button class="btn" id="copy" type="button">Copy address</button>
-        <a class="btn primary" href="mailto:savorskij201@gmail.com">Write an email</a>
+        <div class="mail-btns">
+          <a class="btn primary" href="mailto:savorskij201@gmail.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+          <button class="btn" id="copy" type="button"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg><span id="copy-label">Copy</span></button>
+          <a class="btn" href="https://www.linkedin.com/in/proseno" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-in"/></svg>LinkedIn</a>
+        </div>
       </div>
     </div>
   </section>
@@ -447,26 +485,29 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <footer>
   <div class="wrap">
     <span>© 2026 Oleksandr Yavorskyi</span>
-    <span>CV · Magento Developer</span>
+    <span><a href="https://www.linkedin.com/in/proseno" target="_blank" rel="noopener noreferrer">LinkedIn</a> · CV · Magento Developer</span>
   </div>
 </footer>
 
 <script>
 (function () {
   var root = document.documentElement;
-  var themeBtn = document.getElementById('theme');
-  themeBtn.addEventListener('click', function () {
+
+  /* theme switch */
+  document.getElementById('theme').addEventListener('click', function () {
     var attr = root.getAttribute('data-theme');
     var isDark = attr ? attr === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches;
     root.setAttribute('data-theme', isDark ? 'light' : 'dark');
   });
 
+  /* copy address */
   var copyBtn = document.getElementById('copy');
+  var label = document.getElementById('copy-label');
   var mail = document.getElementById('mail');
   copyBtn.addEventListener('click', function () {
     var done = function () {
-      copyBtn.textContent = 'Copied';
-      setTimeout(function () { copyBtn.textContent = 'Copy address'; }, 1800);
+      label.textContent = 'Copied';
+      setTimeout(function () { label.textContent = 'Copy'; }, 1800);
     };
     var fallback = function () {
       var r = document.createRange();
@@ -479,6 +520,125 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       navigator.clipboard.writeText(mail.textContent.trim()).then(done, fallback);
     } catch (e) { fallback(); }
   });
+
+  /* background: a faint network, with small packets travelling between nodes */
+  var cv = document.getElementById('bg');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var W = 0, H = 0, dpr = 1, link = 140, last = 0, nextPacket = 0, raf = 0;
+  var nodes = [], packets = [];
+  var c = { a: '#7db2ff', b: '#4fd6c3', alpha: 0.22 };
+
+  function readColors() {
+    var cs = getComputedStyle(root);
+    c.a = cs.getPropertyValue('--accent').trim() || c.a;
+    c.b = cs.getPropertyValue('--accent-2').trim() || c.b;
+    var al = parseFloat(cs.getPropertyValue('--net-a'));
+    c.alpha = (isNaN(al) ? 0.22 : al) * (window.innerWidth < 560 ? 0.7 : 1);
+    if (reduce.matches) draw();
+  }
+
+  function resize() {
+    var w = window.innerWidth, h = window.innerHeight;
+    if (w === W && Math.abs(h - H) < 140) return;
+    W = w; H = h;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    link = Math.max(110, Math.min(170, W * 0.14));
+    var n = Math.max(18, Math.min(60, Math.round(W * H / 26000)));
+    while (nodes.length < n) {
+      nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - 0.5) * 16, vy: (Math.random() - 0.5) * 16 });
+    }
+    nodes.length = n;
+    packets.length = 0;
+    nodes.forEach(function (p) {
+      if (p.x > W) p.x = Math.random() * W;
+      if (p.y > H) p.y = Math.random() * H;
+    });
+    if (reduce.matches) draw();
+  }
+
+  function step(dt) {
+    nodes.forEach(function (p) {
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;
+      if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
+    });
+    for (var i = packets.length - 1; i >= 0; i--) {
+      packets[i].t += dt / packets[i].dur;
+      if (packets[i].t >= 1) packets.splice(i, 1);
+    }
+    nextPacket -= dt;
+    if (nextPacket <= 0 && packets.length < 7) {
+      nextPacket = 0.5 + Math.random() * 0.7;
+      var a = Math.floor(Math.random() * nodes.length), near = [];
+      for (var j = 0; j < nodes.length; j++) {
+        if (j === a) continue;
+        var dx = nodes[a].x - nodes[j].x, dy = nodes[a].y - nodes[j].y;
+        if (dx * dx + dy * dy < link * link) near.push(j);
+      }
+      if (near.length) packets.push({ a: a, b: near[Math.floor(Math.random() * near.length)], t: 0, dur: 1.1 + Math.random() * 1.2 });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = c.a;
+    var i, j, p, q, dx, dy, d;
+    for (i = 0; i < nodes.length; i++) {
+      p = nodes[i];
+      for (j = i + 1; j < nodes.length; j++) {
+        q = nodes[j];
+        dx = p.x - q.x; dy = p.y - q.y;
+        if (dx > link || dx < -link || dy > link || dy < -link) continue;
+        d = Math.sqrt(dx * dx + dy * dy);
+        if (d >= link) continue;
+        ctx.globalAlpha = (1 - d / link) * c.alpha;
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+      }
+    }
+    ctx.fillStyle = c.a;
+    ctx.globalAlpha = Math.min(1, c.alpha * 2.2);
+    for (i = 0; i < nodes.length; i++) {
+      ctx.beginPath(); ctx.arc(nodes[i].x, nodes[i].y, 1.8, 0, 6.2832); ctx.fill();
+    }
+    ctx.fillStyle = c.b;
+    for (i = 0; i < packets.length; i++) {
+      p = nodes[packets[i].a]; q = nodes[packets[i].b];
+      if (!p || !q) continue;
+      var x = p.x + (q.x - p.x) * packets[i].t, y = p.y + (q.y - p.y) * packets[i].t;
+      ctx.globalAlpha = 0.16; ctx.beginPath(); ctx.arc(x, y, 6, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = 0.85; ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(ts) {
+    raf = requestAnimationFrame(frame);
+    var dt = Math.min(0.05, (ts - last) / 1000);
+    last = ts;
+    step(dt);
+    draw();
+  }
+
+  function start() {
+    cancelAnimationFrame(raf);
+    if (reduce.matches) { draw(); return; }
+    last = performance.now();
+    raf = requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  try { reduce.addEventListener('change', start); } catch (e) {}
+  try { window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', readColors); } catch (e) {}
+  new MutationObserver(readColors).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  resize();
+  readColors();
+  start();
 })();
 </script>
 </body>
